@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers sources\Window">
+      <UniqueIdentifier>{f0fa5d93-e957-4e1b-b3af-2eac87fe0bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Window">
+      <UniqueIdentifier>{0d258f66-47ff-4a56-bc58-c7ce5794d135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Vect">
+      <UniqueIdentifier>{c4230e11-d66b-4c69-a0c5-65817449e94a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Vect">
+      <UniqueIdentifier>{eef1e3d2-c2cb-4706-b1b2-91134ee90995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Ressources">
+      <UniqueIdentifier>{befb151e-c6a5-4b37-bcd8-0d280eb72276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Ressources">
+      <UniqueIdentifier>{1bb17434-ba14-4d01-b9dc-39fe4e3022c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Object">
+      <UniqueIdentifier>{10960929-9846-475a-ad06-3cd723db4543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Object\Objects">
+      <UniqueIdentifier>{c4c53b27-9210-49db-9ae0-8441998ad671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Object">
+      <UniqueIdentifier>{c2006b1d-281e-4b42-bf34-bc2cc3e757b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Object\Objects">
+      <UniqueIdentifier>{2695f3ec-c9e8-4e53-9e4d-f38123ca8a41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Managers">
+      <UniqueIdentifier>{3d8ca799-bf5e-4042-941a-043d7f688133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\FileReader">
+      <UniqueIdentifier>{6c26afca-7e31-4445-8dc9-74437044b63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Managers">
+      <UniqueIdentifier>{abc7c8e7-fde0-4ed8-b829-0096edd2a2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\FileReader">
+      <UniqueIdentifier>{e22abcfc-1900-4ced-8bb5-70906ff98d89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TowerDefense.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Fichiers sources\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Vect.cpp">
+      <Filter>Fichiers sources\Vect</Filter>
+    </ClCompile>
+    <ClCompile Include="Ressources.cpp">
+      <Filter>Fichiers sources\Ressources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Base.cpp">
+      <Filter>Fichiers sources\Object\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullets.cpp">
+      <Filter>Fichiers sources\Object\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Cases.cpp">
+      <Filter>Fichiers sources\Object\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ennemies.cpp">
+      <Filter>Fichiers sources\Object\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Towers.cpp">
+      <Filter>Fichiers sources\Object\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Fichiers d%27en-tête\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Vect.h">
+      <Filter>Fichiers d%27en-tête\Vect</Filter>
+    </ClInclude>
+    <ClInclude Include="Ressources.h">
+      <Filter>Fichiers d%27en-tête\Ressources</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>Fichiers d%27en-tête\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>Fichiers d%27en-tête\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Cases.h">
+      <Filter>Fichiers d%27en-tête\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ennemies.h">
+      <Filter>Fichiers d%27en-tête\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Towers.h">
+      <Filter>Fichiers d%27en-tête\Object\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
