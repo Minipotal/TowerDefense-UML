@@ -1,4 +1,4 @@
-#include "GameObject.h"
+ #include "GameObject.h"
 
 GameObject::GameObject(Vect2 pos, Vect2 size, float color, int speed, int life)
 {
