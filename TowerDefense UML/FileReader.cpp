@@ -74,6 +74,40 @@ void FileReader::readFileTxt(std::string path)
     //}
 }
 
+std::vector<std::vector<std::string>> FileReader::readFileCsv(std::string path)
+{
+    std::vector<std::vector<std::string>> list;
+    std::fstream newfile;
+    std::vector<std::string> result;
+
+    newfile.open(path, std::ios::in); //open a file to perform read operation using file object
+
+    if (newfile.is_open()) { //checking whether the file is open
+        std::string tp;
+        while (getline(newfile, tp)) { //read data from file object and put it into string.
+            if (tp.size() != 0) // Vérifications pour ne pas les valeurs dans notre reader
+            {
+                result.resize(result.size() + 1);
+                result[result.size() - 1] = tp;
+                list.resize(list.size() + 1);
+            }
+        }
+    }
+    newfile.close(); //close the file object.
+
+    return list;
+}
+
+void FileReader::readFileEnnemie(std::string path)
+{
+    _tabEnnemies = this->readFileCsv(path);
+}
+
+void FileReader::readFileTower(std::string path)
+{
+    _tabTower = this->readFileCsv(path);
+}
+
 std::vector<std::vector<int>> FileReader::getFile()
 {
     return _tabFile;
