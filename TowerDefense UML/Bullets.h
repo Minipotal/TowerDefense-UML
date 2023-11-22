@@ -1,13 +1,18 @@
 #pragma once
-
 #include "GameObject.h"
+
+class Towers;
 
 class Bullets : public GameObject
 {
 private:
-	int _damage;
+	Towers* _pTower;
+	int _iDamage;
+	GameObject* _pTarget;
 
 public:
-	Bullets(Vect2 pos, Vect2 size, float color, int speed, int life, int damage);
-};
+	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, sf::Color cColor);
+	void Movement(float fDeltaTime, sf::RenderWindow* pWindow);
 
+	void EnnemieColid(GameObject* pEnemie);
+};

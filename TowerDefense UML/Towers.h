@@ -1,20 +1,27 @@
 #pragma once
-
 #include "GameObject.h"
+#include "Bullets.h"
 
 class Towers : public GameObject
 {
 private:
-	int damage;
-	float cooldown;
-	int range;
-	int cost;
+	std::vector<Bullets*> _vBulletsList;
+	int id;
+	int _iDamage;
+	int _iRange;
+	int _iCost;
+	sf::Color _cColor;
+	float _fCooldown;
+	sf::Clock _oClock;
 
 public:
-	Towers(Vect2 pos, Vect2 size, float color, int damage, float cooldown, int range, int cost);
-	Towers();
+	Towers(Vect2 vPos, Vect2 vSize, sf::Color cColor);
+	void ShootBullet();
 
-	int getCost();
-	void fire();
-	void levelUp();
+	//Ball Gestion
+	const std::vector<Bullets*>& GetBulletsList() const;
+	void RemoveFromBulletsList(Bullets* pBullets);
+
+	int GetCost();
+	void LevelUp();
 };

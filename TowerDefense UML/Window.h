@@ -10,12 +10,12 @@ class MWindow
 private:
 	Vect2 _size;
 	std::string _name;
-	Window* _window;
+	sf::RenderWindow* _window;
 
 public:
 	MWindow(Vect2 size, std::string _name);
 	void display();
 
-	Window* getWindow();
+	sf::RenderWindow* getWindow();
 };
 
