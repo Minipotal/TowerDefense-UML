@@ -55,6 +55,9 @@
     <Filter Include="Fichiers d%27en-tête\FileReader">
       <UniqueIdentifier>{e22abcfc-1900-4ced-8bb5-70906ff98d89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\Files">
+      <UniqueIdentifier>{a5ba6afa-91b4-4602-aa3b-48321b47e60b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TowerDefense.cpp">
@@ -134,5 +137,10 @@
     <ClInclude Include="FileReader.h">
       <Filter>Fichiers d%27en-tête\FileReader</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Tower Defense\Tower Defense\Files\test.txt">
+      <Filter>Fichiers de ressources\Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

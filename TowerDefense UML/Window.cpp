@@ -13,7 +13,7 @@ void MWindow::display()
 
 }
 
-Window* MWindow::getWindow()
+sf::RenderWindow* MWindow::getWindow()
 {
 	return _window;
 }

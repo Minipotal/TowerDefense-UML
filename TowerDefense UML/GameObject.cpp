@@ -18,3 +18,13 @@ void GameObject::move(Vect2 direction)
 {
 	_pos += direction;
 }
+
+Vect2 GameObject::pos()
+{
+	return _pos;
+}
+
+Vect2 GameObject::size()
+{
+	return _size;
+}

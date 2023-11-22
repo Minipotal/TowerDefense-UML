@@ -5,7 +5,7 @@ Towers::Towers() : Towers({ 0, 0 }, { 0, 0 }, 0x000000, 0, 0, 0, 0) { };
 
 int Towers::getCost()
 {
-    return 0;
+    return _cost;
 }
 
 void Towers::fire()
