@@ -30,7 +30,7 @@ private:
 
 public:
 	std::vector<Area> m_oAreas;
-	std::map<int, std::map<sf::Event::EventType, event>> _dict;
+	std::map<int, std::map<sf::Mouse::Button, event>> _dict;
 
 	static void Create()
 	{
@@ -45,7 +45,7 @@ public:
 		return _pInstance;
 	}
 
-	void AddEvent(GameManager::GameArea area, sf::Event::EventType eEventType, event oFunction)
+	void AddEvent(GameManager::GameArea area, sf::Mouse::Button eEventType, event oFunction)
 	{
 		_dict[area][eEventType] = oFunction;
 	}
@@ -55,7 +55,7 @@ public:
 		m_oAreas.push_back(Area(pos, size, eGameArea));
 	}
 
-	void CheckEvent(GameManager::GameArea area, sf::Event::EventType eventName);
+	void CheckEvent(GameManager::GameArea area, sf::Mouse::Button eventName);
 
 	void update(sf::RenderWindow* _window);
 };

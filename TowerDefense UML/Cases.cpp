@@ -14,7 +14,7 @@ Cases::Cases(Vect2 pos, Vect2 size, float color, int speed, int life) : GameObje
 void Cases::destroy(Ressources* o_ressources)
 {
 	if (!_isFilled) return;
-	o_ressources->_gold += _placedTower->getCost() * .8f;
+	o_ressources->_gold += (int)(_placedTower->getCost() * .8f);
 	_placedTower = new Towers();
 	_isFilled = false;
 }

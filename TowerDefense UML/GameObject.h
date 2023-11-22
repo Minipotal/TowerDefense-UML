@@ -18,5 +18,7 @@ public:
 
 	Vect2 pos();
 	Vect2 size();
+
+	bool isPointInside(const sf::Vector2i& mousePos);
 };
 

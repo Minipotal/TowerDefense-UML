@@ -7,7 +7,7 @@ EventManager::EventManager()
 
 }
 
-void EventManager::CheckEvent(GameManager::GameArea area, sf::Event::EventType eventName) {
+void EventManager::CheckEvent(GameManager::GameArea area, sf::Mouse::Button eventName) {
 	if (_dict.find(area) != _dict.end() && _dict[area].find(eventName) != _dict[area].end()) {
 		_dict[area][eventName]();
 	}
@@ -20,26 +20,19 @@ void EventManager::update(sf::RenderWindow* _window)
 
 	while (_window->pollEvent(event))
 	{
-		for (int i = 0; i < m_oAreas.size(); i++)
+		if (event.type == sf::Event::EventType::Closed)
 		{
-			if ((GameManager::Get()->_mousePos->x >= m_oAreas[i]._pos.x() && GameManager::Get()->_mousePos->x <= (m_oAreas[i]._size.x())) && (GameManager::Get()->_mousePos->y >= m_oAreas[i]._pos.y() && GameManager::Get()->_mousePos->y <= m_oAreas[i]._size.y()))
+			_window->close();
+		}
+
+		if (event.type == sf::Event::MouseButtonPressed)
+		{
+			for (int i = 0; i < m_oAreas.size(); i++)
 			{
-				if (event.key.code == sf::Keyboard::B)
+				if ((GameManager::Get()->_mousePos->x >= m_oAreas[i]._pos.x() && GameManager::Get()->_mousePos->x <= (m_oAreas[i]._size.x())) && (GameManager::Get()->_mousePos->y >= m_oAreas[i]._pos.y() && GameManager::Get()->_mousePos->y <= m_oAreas[i]._size.y()))
 				{
-					m_oAreas[i]._eGameArea = GameManager::Get()->GameArea::Build;
+					CheckEvent(m_oAreas[i]._eGameArea, event.mouseButton.button);
 				}
-				else if (event.key.code == sf::Keyboard::U)
-				{
-					m_oAreas[i]._eGameArea = GameManager::Get()->GameArea::Upgrade;
-				}
-				else if (event.key.code == sf::Keyboard::D)
-				{
-					m_oAreas[i]._eGameArea = GameManager::Get()->GameArea::Destroy;
-				}
-				CheckEvent(m_oAreas[i]._eGameArea, event.type);
-			}
-			else {
-				CheckEvent(GameManager::GameArea::Quit, event.type);
 			}
 		}
 	}

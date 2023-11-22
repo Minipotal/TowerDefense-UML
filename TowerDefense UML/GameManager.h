@@ -1,6 +1,8 @@
 #pragma once
 
 #include <map>
+#include <SFML/Graphics.hpp>
+#include <vector>
 
 class Towers;
 class Ressources;
@@ -18,8 +20,6 @@ private:
 
 	std::vector<Towers*> o_towers;
 	std::vector<std::vector<Ennemies*>> o_ennemies;
-	std::vector<Ennemies*> o_popEnnemies;
-	int _ennemiesSize;
 	std::vector<Cases*> o_cases;
 
 	MWindow* o_window;
@@ -38,8 +38,6 @@ public:
 		Build,
 		Upgrade,
 		Destroy,
-		Restart,
-		Quit
 	};
 
 	static void Create();
@@ -49,14 +47,11 @@ public:
 		return _pInstance;
 	}
 
-	void Game();
-
+	void game();
 	void initMobs();
-	
-	void Mquit();
-	void Mbuy();
-	void MbuttonClick();
+	void initTowers();
 
+	void Mbuy();
 	void Mupgrade();
 	void Mdestroy();
 };

@@ -11,16 +11,6 @@
 
 GameManager* GameManager::_pInstance = nullptr;
 
-void quit() 
-{
-	GameManager::Get()->Mquit();
-}
-
-void MbuttonClick()
-{
-	GameManager::Get()->MbuttonClick();
-}
-
 void upgrade()
 {
 	GameManager::Get()->Mupgrade();
@@ -31,24 +21,40 @@ void destroy()
 	GameManager::Get()->Mdestroy();
 }
 
+void buy()
+{
+	GameManager::Get()->Mbuy();
+}
+
 void GameManager::Initialize()
 {
-	o_window = new MWindow(Vect2(1000, 800), "Tower Defense");
+	float windowWidth = 1920;
+	float windowHeight = 1080;
+	o_window = new MWindow(Vect2(windowWidth, windowHeight), "Tower Defense");
 	_window = o_window->getWindow();
 	_ressource = new Ressources();
 	_mousePos = new sf::Vector2i();
 	_base = new Base(Vect2(0, 0), Vect2(0, 0), 0xee33ff, 0, 10);
 
-	// Event
-	for (int i = 0; i < o_cases.size(); i++)
-	{
-		EventManager::Get()->AddArea(o_cases[i]->pos(), o_cases[i]->size(), GameArea::Game);
-	}
+	float gameAreaWidth = windowWidth * 0.8;
+	float gameAreaHeight = windowHeight * 1.0;
 
-	EventManager::Get()->AddEvent(GameArea::Upgrade, sf::Event::EventType::MouseButtonPressed, &upgrade);
-	EventManager::Get()->AddEvent(GameArea::Destroy, sf::Event::EventType::MouseButtonPressed, &destroy);
+	float gameAreaStartX = 0;
+	float gameAreaStartY = 0;
+	
+	int caseLineCount = 10;
+	int caseColumnCount = 10;
 
-	EventManager::Get()->AddEvent(GameArea::Quit, sf::Event::EventType::Closed, &quit);
+	initMobs();
+
+	EventManager::Get()->AddArea(Vect2(gameAreaStartX, gameAreaStartY), Vect2(gameAreaWidth, gameAreaHeight), GameArea::Game);
+
+	//for (int i ) 
+	
+	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Left, &buy);
+	EventManager::Get()->AddEvent(GameArea::Upgrade, sf::Mouse::Button::Middle, &upgrade);
+	EventManager::Get()->AddEvent(GameArea::Destroy, sf::Mouse::Button::Right, &destroy);
+
 }
 
 void GameManager::Create()
@@ -63,7 +69,7 @@ void GameManager::Create()
 void GameManager::initMobs()
 {
 	FileReader* o_file = new FileReader();
-	o_file->readFileTxt("Files/test.txt");
+	o_file->readFileTxt("Files/mobs.txt");
 
 	for (int i = 0; i < o_file->getFile().size(); i++)
 	{
@@ -71,37 +77,52 @@ void GameManager::initMobs()
 		for (int j = 0; j < o_file->getFile()[i].size(); j++)
 		{
 			o_ennemies[i].resize(j);
-			o_ennemies[i][j].push_back(o_file->getFile()[i][j]);
+			//o_ennemies[i][j].push_back(o_file->getFile()[i][j]); // id pour le moment, changer ave les bons params
 		}
 	}
 }
 
-void GameManager::Mquit()
+void GameManager::initTowers()
 {
-	_window->close();
+
 }
 
 void GameManager::Mbuy()
 {
-
-}
-
-void GameManager::MbuttonClick()
-{
-
+	for (int i = 0; i < o_cases.size(); i++)
+	{
+		if (o_cases[i]->isPointInside(*_mousePos))
+		{
+			//o_cases[i]->buy(, _ressource); // a modif qu'and y'aura les tours
+			std::cout << "buy" << std::endl;
+		}
+	}
 }
 
 void GameManager::Mupgrade()
 {
-
+	for (int i = 0; i < o_cases.size(); i++)
+	{
+		if (o_cases[i]->isPointInside(*_mousePos))
+		{
+			o_cases[i]->upgrade(_ressource);
+		}
+	}
 }
 
 
 void GameManager::Mdestroy()
 {
+	for (int i = 0; i < o_cases.size(); i++)
+	{
+		if (o_cases[i]->isPointInside(*_mousePos))
+		{
+			o_cases[i]->destroy(_ressource);
+		}
+	}
 }
 
-void GameManager::Game()
+void GameManager::game()
 {
 	while (_window && _window->isOpen())
 	{

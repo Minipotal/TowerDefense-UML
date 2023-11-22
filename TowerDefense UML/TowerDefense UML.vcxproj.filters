@@ -139,7 +139,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\Tower Defense\Tower Defense\Files\test.txt">
+    <Text Include="..\..\Tower Defense\Tower Defense\Files\mobs.txt">
       <Filter>Fichiers de ressources\Files</Filter>
     </Text>
   </ItemGroup>
