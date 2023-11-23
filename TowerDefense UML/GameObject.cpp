@@ -48,5 +48,5 @@ void GameObject::minusHp(int number)
 
 void GameObject::move(Vect2 direction)
 {
-	_vPos += direction;
+	_vPos += direction * _iSpeed;
 }

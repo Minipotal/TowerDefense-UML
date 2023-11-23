@@ -8,11 +8,11 @@ private:
 protected:
 	Vect2 _vPos;
 	Vect2 _vSize;
-	int _iSpeed;
-	int _iLife;
+	int _iSpeed = 1;
+	int _iLife,_iMaxLife;
+	
 
 public:
-//Tower Methods
 	GameObject(Vect2 vPos, float fDiametre, sf::Color cColor); //cercle
 	GameObject(Vect2 vPos, Vect2 vSize, sf::Color cColor); //Rect
 
@@ -24,8 +24,6 @@ public:
 	Vect2 GetSize();
 	void SetOrigine(Vect2 vPos);
 
-
-//Other 
 	void minusHp(int number);
 	void move(Vect2 direction);
 };

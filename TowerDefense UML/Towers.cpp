@@ -1,6 +1,8 @@
 #include "Towers.h"
 #include "GameObject.h"
 #include "Bullets.h"
+#include "Ennemies.h"
+#include "Math.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 
@@ -10,11 +12,27 @@ Towers::Towers(Vect2 vPos, Vect2 vSize, sf::Color cColor) : GameObject(vPos, vSi
 	_oClock.restart();
 }
 
-
-
-
-void Towers::ShootBullet()
+void Towers::ShootBullet(std::vector<Ennemies*> vEnnemiesList)
 {
+	//Choose Target
+	Ennemies* pTarget = NULL;
+	for (int i = 0; i < vEnnemiesList.size(); i++)
+	{
+		if (Math::CircleToCircleColid(_vPos,_iRange, vEnnemiesList[i]->GetPosition(), vEnnemiesList[i]->GetSize().x()))
+		{
+			int iTargetX = 0;
+			if (vEnnemiesList[i]->GetPosition().x() > iTargetX)
+			{
+				iTargetX = vEnnemiesList[i]->GetPosition().x();
+				pTarget = vEnnemiesList[i];
+			}
+		}
+	}
+
+
+
+
+	//Create Bullet
 	if (_oClock.getElapsedTime().asSeconds() >= 1)
 	{
 		float fBallDiametre = 20;
@@ -25,6 +43,20 @@ void Towers::ShootBullet()
 
 	}
 }
+
+void Towers::StateMachine()
+{
+	switch (_iState)
+	{
+	case Idle:
+		break;
+	case Targeting:
+		break;
+	default:
+		break;
+	}
+}
+
 //Ball Gestion
 const std::vector<Bullets*>& Towers::GetBulletsList() const
 {
@@ -35,14 +67,8 @@ void Towers::RemoveFromBulletsList(Bullets* pBullets)
 	_vBulletsList.erase(std::remove(_vBulletsList.begin(), _vBulletsList.end(), pBullets), _vBulletsList.end());
 }
 
-
-
 /////////////Temporaire
 int Towers::GetCost()
 {
 	return 0;
-}
-void Towers::LevelUp()
-{
-
 }

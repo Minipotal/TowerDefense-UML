@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
-#include "Bullets.h"
-#include "Towers.h"
+#include "Ennemies.h"
 
 class Ressources;
 
@@ -10,6 +9,9 @@ class GameManager
 private:
 
 public:
+
+	std::vector<Ennemies*> EnemiesList;
+
 	GameManager();
 
 	Ressources* _ressources;

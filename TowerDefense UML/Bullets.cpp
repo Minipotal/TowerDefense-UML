@@ -27,17 +27,3 @@ void Bullets::Movement(float fDeltaTime, sf::RenderWindow* pWindow)
 	vNewPos.setY(_vPos.y() + (vDirection.y() * 350) * fDeltaTime);
 	SetPosition(vNewPos);
 }
-
-/*void Bullets::EnnemieColid(GameObject* pEnemie)
-{
-	Vect2 vDistance = pEnemie->GetPosition() - _vPos;
-
-	float fNorme = sqrt((vDistance.x() * vDistance.x()) + (vDistance.y() * vDistance.y()));
-
-	if (fNorme < (_vSize.x() + pEnemie->GetSize().x()))
-	{
-		_pTower->RemoveFromBulletsList(this);
-		pEnemie->minusHp(_iDamage);
-		delete(this);
-	}
-}*/

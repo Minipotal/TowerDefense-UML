@@ -55,6 +55,12 @@
     <Filter Include="Fichiers d%27en-tête\FileReader">
       <UniqueIdentifier>{e22abcfc-1900-4ced-8bb5-70906ff98d89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Math">
+      <UniqueIdentifier>{b4a39b04-69b8-4b5d-b008-90b524ee6b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Math">
+      <UniqueIdentifier>{abd86292-42b3-4805-b088-2db4b33bd126}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TowerDefense.cpp">
@@ -96,6 +102,9 @@
     <ClCompile Include="FileReader.cpp">
       <Filter>Fichiers sources\FileReader</Filter>
     </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Fichiers sources\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -133,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="FileReader.h">
       <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Fichiers d%27en-tête\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

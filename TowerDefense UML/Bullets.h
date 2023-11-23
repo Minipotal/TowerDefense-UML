@@ -14,5 +14,5 @@ public:
 	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, sf::Color cColor);
 	void Movement(float fDeltaTime, sf::RenderWindow* pWindow);
 
-	void EnnemieColid(GameObject* pEnemie);
+	
 };
