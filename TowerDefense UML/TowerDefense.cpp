@@ -5,8 +5,10 @@
 #include "GameManager.h"
 #include "FileReader.h"
 #include "Window.h"
+#include "GameManager.h"
+#include "EventManager.h"
 
-int main()
+void Game()
 {
     FileReader* oFile = new FileReader();
 
@@ -72,6 +74,13 @@ int main()
 
     return 0;
 
+// 	GameManager::Get()->game();
+}
 
+int main()
+{
+// 	EventManager::Create();
+// 	GameManager::Create();
+	Game();
 }
 

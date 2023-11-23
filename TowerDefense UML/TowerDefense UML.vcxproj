@@ -163,6 +163,13 @@
     <ClInclude Include="Vect.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\csv_for_ennemi.csv" />
+    <None Include="Files\csv_for_tower.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Files\mobs.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

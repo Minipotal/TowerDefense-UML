@@ -6,11 +6,11 @@ class GameObject
 private:
 	sf::Shape* _pShape;
 protected:
-	Vect2 _vPos;
-	Vect2 _vSize;
-	int _iSpeed = 1;
-	int _iLife,_iMaxLife;
-	
+	float _color;
+	int _speed;
+	int _life;
+	Vect2 _pos;
+	Vect2 _size;
 
 public:
 	GameObject(Vect2 vPos, float fDiametre, sf::Color cColor); //cercle
@@ -26,5 +26,11 @@ public:
 
 	void minusHp(int number);
 	void move(Vect2 direction);
+
+	Vect2 pos();
+	Vect2 size();
+
+	bool isPointInside(const sf::Vector2i& mousePos);
+	Shape* getShape();
 };
 

@@ -5,6 +5,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+class GameObject;
+
 class MWindow
 {
 private:
@@ -17,5 +19,7 @@ public:
 	void display();
 
 	sf::RenderWindow* getWindow();
+  
+	void winDraw(std::vector<GameObject*> o_gameObject);
 };
 

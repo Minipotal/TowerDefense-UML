@@ -60,6 +60,8 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Math">
       <UniqueIdentifier>{abd86292-42b3-4805-b088-2db4b33bd126}</UniqueIdentifier>
+    <Filter Include="Fichiers de ressources\Files">
+      <UniqueIdentifier>{a5ba6afa-91b4-4602-aa3b-48321b47e60b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -146,5 +148,10 @@
     <ClInclude Include="Math.h">
       <Filter>Fichiers d%27en-tête\Math</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Tower Defense\Tower Defense\Files\mobs.txt">
+      <Filter>Fichiers de ressources\Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

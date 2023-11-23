@@ -1,4 +1,5 @@
 #include "Ennemies.h"
+
 #include <ctime>
 #include <cstdlib>
 #include<SFML/Graphics/Color.hpp>
@@ -10,5 +11,3 @@ Ennemies::Ennemies(float fDiameter, sf::Color cColor, sf::Color cDeadColor, int 
 	_iGold = iGold;
 	_iLife = iLife;
 }
-
-

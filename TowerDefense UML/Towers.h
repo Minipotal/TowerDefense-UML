@@ -34,4 +34,9 @@ public:
 
 	int GetCost();
 
+
+// public:
+// 	Towers(Vect2 pos, Vect2 size, float color, int damage, float cooldown, int range, int cost, int bulletSpeed);
+// 	Towers();
+
 };

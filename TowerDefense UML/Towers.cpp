@@ -11,6 +11,8 @@ Towers::Towers(Vect2 vPos, Vect2 vSize, sf::Color cColor) : GameObject(vPos, vSi
 	_cColor = cColor;
 	_oClock.restart();
 }
+// Towers::Towers(Vect2 pos, Vect2 size, float color, int damage, float cooldown, int range, int cost, int bulletSpeed) : GameObject(pos, size, color, 0, 0) {};
+// Towers::Towers() : Towers({ 0, 0 }, { 0, 0 }, 0x000000, 0, 0, 0, 0, 0) { };
 
 void Towers::ChooseTarget(std::vector<Ennemies*> vEnnemiesList)
 {
@@ -68,8 +70,7 @@ void Towers::RemoveFromBulletsList(Bullets* pBullets)
 	_vBulletsList.erase(std::remove(_vBulletsList.begin(), _vBulletsList.end(), pBullets), _vBulletsList.end());
 }
 
-/////////////Temporaire
 int Towers::GetCost()
 {
-	return 0;
+	return _iCost;
 }
