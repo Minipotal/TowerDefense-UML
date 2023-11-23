@@ -85,9 +85,10 @@ void GameManager::initMobs()
 	FileReader* o_file = new FileReader();
 	o_file->readFileTxt("Files/mobs.txt");
 
+	o_ennemies.resize(o_file->getFile().size());
+
 	for (int i = 0; i < o_file->getFile().size(); i++)
 	{
-		o_ennemies.resize(i);
 		for (int j = 0; j < o_file->getFile()[i].size(); j++)
 		{
 			o_ennemies[i].resize(j);
