@@ -1,12 +1,9 @@
 #include "Ennemies.h"
 #include <ctime>
 #include <cstdlib>
+#include<SFML/Graphics/Color.hpp>
 
-
-Ennemies::Ennemies(Vect2 pos, Vect2 size, float color, int speed, int life, int damage, int ID, int iLife, int iDamage, int iSpeed, int iGold) : GameObject(pos, size, color, speed, life)
+Ennemies::Ennemies(Vect2 vPos, float fDiameter, int iLife) : GameObject(vPos, fDiameter, sf::Color::Red)
 {
-	_life = randLife(minLife, maxLife);
-	int damage = randDamage(minDamage, maxDamage);
-	_speed = randSpeed(minSpeed, maxSpeed);
-	int gold = randGold(minGold, maxGold);
+	_iLife = 5;
 }
