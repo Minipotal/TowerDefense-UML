@@ -1,6 +1,5 @@
 #pragma once
 
-#include <map>
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -29,7 +28,7 @@ private:
 
 	Towers* _selectedTower;
 
-	std::map<int, std::vector<GameObject*>> _entities;
+	std::vector<std::vector<GameObject*>> _entities;
 
 	float _deltaTime;
 
@@ -49,6 +48,7 @@ public:
 		Case = 0,
 		Ennemi = 1,
 		Tower = 2,
+		Total,
 	};
 
 	static void Create();

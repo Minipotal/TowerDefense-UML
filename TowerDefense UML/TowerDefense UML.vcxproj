@@ -136,6 +136,7 @@
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Bullets.cpp" />
     <ClCompile Include="Cases.cpp" />
+    <ClCompile Include="colors.cpp" />
     <ClCompile Include="Ennemies.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileReader.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Base.h" />
     <ClInclude Include="Bullets.h" />
     <ClInclude Include="Cases.h" />
+    <ClInclude Include="colors.h" />
     <ClInclude Include="Ennemies.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FileReader.h" />

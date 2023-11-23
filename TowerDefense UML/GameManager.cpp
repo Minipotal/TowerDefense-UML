@@ -53,6 +53,8 @@ void GameManager::Initialize()
 	_base = new Base(Vect2(0, 0), Vect2(0, 0), 0xee33ff, 0, 10);
 	_deltaTime = 0;
 
+	_entities.resize(GameManager::GameOLabel::Total);
+
 	float gameAreaWidth = windowWidth * 0.8;
 	float gameAreaHeight = windowHeight * 1.0;
 
@@ -216,7 +218,6 @@ void GameManager::game()
 				_entities[GameManager::GameOLabel::Tower][i]->GetBulletsList()[j]->Movement(_deltaTime);
 			}
 		}
-
 
 		// draw
 		_window->clear();
