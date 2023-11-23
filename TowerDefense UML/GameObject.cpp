@@ -73,3 +73,19 @@ Shape* GameObject::getShape()
 	return _shape;
 }
 
+void GameObject::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
+{
+}
+
+const std::vector<GameObject*>& GameObject::GetBulletsList()
+{
+	std::vector<GameObject*> o_objects;
+	o_objects.resize(1);
+	o_objects.push_back(new GameObject(Vect2(0, 0), Vect2(0, 0), 0, 0, 0));
+	return o_objects;
+}
+
+void GameObject::Movement(float deltaTime)
+{
+}
+

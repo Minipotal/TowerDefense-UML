@@ -19,24 +19,23 @@ private:
 	int _range;
 	int _cost;
 	int _bulletSpeed;
-	Ennemies* _pTarget;
+	GameObject* _pTarget;
 	sf::Clock _oClock;
-	std::vector<Bullets*> _vBulletsList;
+	std::vector<GameObject*> _vBulletsList;
 
 public:
 	Towers(Vect2 pos, Vect2 size, float color, int damage, float cooldown, int range, int cost, int bulletSpeed);
 	Towers();
 
 	int getCost();
-	void fire();
-	void levelUp();
+	void levelUp(int damage);
 
-	void ChooseTarget(std::vector<Ennemies*> vEnnemiesList);
+	void ChooseTarget(std::vector<GameObject*> vEnnemiesList) override;
 
 	void StateMachine();
 
 	//Ball Gestion
-	const std::vector<Bullets*>& GetBulletsList() const;
+	const std::vector<GameObject*>& GetBulletsList() override ;
 	void RemoveFromBulletsList(Bullets* pBullets);
 };
 

@@ -29,5 +29,10 @@ public:
 
 	bool isPointInside(const sf::Vector2i& mousePos);
 	Shape* getShape();
+
+	virtual void ChooseTarget(std::vector<GameObject*> vEnnemiesList);
+	virtual const std::vector<GameObject*>& GetBulletsList();
+
+	virtual void Movement(float deltaTime);
 };
 

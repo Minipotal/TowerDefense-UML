@@ -15,19 +15,15 @@ int Towers::getCost()
     return _cost;
 }
 
-void Towers::fire()
+void Towers::levelUp(int damage)
 {
-
-}
-void Towers::levelUp()
-{
-
+	_damage += damage;
 }
 
-void Towers::ChooseTarget(std::vector<Ennemies*> vEnnemiesList)
+void Towers::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 {
 	//Choose Target
-	Ennemies* pTarget = NULL;
+	GameObject* pTarget = NULL;
 	for (int i = 0; i < vEnnemiesList.size(); i++)
 	{
 		if (Math::CircleToCircleColid(_pos, _range, vEnnemiesList[i]->pos(), vEnnemiesList[i]->size().x()) == true)
@@ -71,7 +67,7 @@ void Towers::StateMachine()
 }
 
 //Ball Gestion
-const std::vector<Bullets*>& Towers::GetBulletsList() const
+const std::vector<GameObject*>& Towers::GetBulletsList()
 {
 	return (_vBulletsList);
 }

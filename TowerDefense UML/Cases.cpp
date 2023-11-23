@@ -24,7 +24,7 @@ void Cases::upgrade(Ressources* o_ressources)
 	if (o_ressources->_gold > _placedTower->getCost())
 	{
 		o_ressources->_gold -= _placedTower->getCost();
-		_placedTower->levelUp();
+		_placedTower->levelUp(10);
 		_isFilled = true;
 	}
 }

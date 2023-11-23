@@ -51,6 +51,7 @@ void GameManager::Initialize()
 	_ressource = new Ressources();
 	_mousePos = new sf::Vector2i();
 	_base = new Base(Vect2(0, 0), Vect2(0, 0), 0xee33ff, 0, 10);
+	_deltaTime = 0;
 
 	float gameAreaWidth = windowWidth * 0.8;
 	float gameAreaHeight = windowHeight * 1.0;
@@ -74,12 +75,12 @@ void GameManager::Initialize()
 	{
 		for (int j = 0; j < caseColumnCount; j++)
 		{
-			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / startX, gameAreaHeight / startY), 0x63340b, 0, 0));
-			_entities[1].push_back(o_cases[i][j]);
-			startX += gameAreaWidth / startX;
+			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / caseLineCount, gameAreaHeight / caseColumnCount), 0x63340b, 0, 0));
+			_entities[GameManager::GameOLabel::Case].push_back(o_cases[i][j]);
+			startX += gameAreaWidth / caseLineCount;
 		}
 		startX = gameAreaStartX;
-		startY += gameAreaHeight / startY;
+		startY += gameAreaHeight / caseColumnCount;
 	}
 
 	/* init events */
@@ -137,7 +138,7 @@ void GameManager::Mbuy()
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
 					o_cases[i][j]->buy(_selectedTower, _ressource);
-					_entities[0].push_back(_selectedTower);
+					_entities[GameManager::GameOLabel::Tower].push_back(_selectedTower);
 					std::cout << "buy" << std::endl;
 				}
 			}
@@ -172,7 +173,7 @@ void GameManager::Mdestroy()
 			{
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
-					_entities[0].erase(std::remove(_entities[0].begin(), _entities[0].end(), o_cases[i][j]->getTower()), _entities[0].end());
+					_entities[GameManager::GameOLabel::Tower].erase(std::remove(_entities[0].begin(), _entities[0].end(), o_cases[i][j]->getTower()), _entities[0].end());
 					o_cases[i][j]->destroy(_ressource);
 				}
 			}
@@ -199,16 +200,33 @@ void GameManager::game()
 {
 	while (_window && _window->isOpen())
 	{
+		sf::Clock oClock;
+
 		if (_base->getHp() == 0)
 		{
 			std::cout << "You loose" << std::endl;
 		}
 
+		for (int i = 0; i < _entities[GameManager::GameOLabel::Tower].size(); i++)
+		{
+			_entities[GameManager::GameOLabel::Tower][i]->ChooseTarget(_entities[1]);
+
+			for (int j = 0; j < _entities[GameManager::GameOLabel::Tower][i]->GetBulletsList().size(); j++)
+			{
+				_entities[GameManager::GameOLabel::Tower][i]->GetBulletsList()[j]->Movement(_deltaTime);
+			}
+		}
+
+
+		// draw
 		_window->clear();
 
 		for (int i = 0; i < _entities.size(); i++)
 		{
 			o_window->winDraw(_entities[i]);
 		}
+		o_window->display();
+
+		_deltaTime = oClock.restart().asSeconds();
 	}
 }

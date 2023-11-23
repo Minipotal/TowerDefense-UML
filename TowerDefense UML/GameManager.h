@@ -31,6 +31,8 @@ private:
 
 	std::map<int, std::vector<GameObject*>> _entities;
 
+	float _deltaTime;
+
 public:
 
 	Ressources* _ressource;
@@ -44,9 +46,9 @@ public:
 
 	typedef enum GameOLabel
 	{
-		Tower = 0,
-		Case = 1,
-		Ennemi = 2,
+		Case = 0,
+		Ennemi = 1,
+		Tower = 2,
 	};
 
 	static void Create();
