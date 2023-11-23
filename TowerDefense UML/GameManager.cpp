@@ -45,6 +45,8 @@ void GameManager::Initialize()
 	int caseLineCount = 10;
 	int caseColumnCount = 10;
 
+	o_cases.resize(caseLineCount);
+	
 	/* init entities */
 	initMobs();
 
