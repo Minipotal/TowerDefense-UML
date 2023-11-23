@@ -19,7 +19,6 @@ public:
 	void display();
 
 	sf::RenderWindow* getWindow();
-  
 	void winDraw(std::vector<GameObject*> o_gameObject);
 };
 
