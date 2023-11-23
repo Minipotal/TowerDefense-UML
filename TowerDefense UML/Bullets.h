@@ -14,5 +14,6 @@ public:
 	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, float color);
 
 	void Movement(float fDeltaTime);
+	void EnnemiesColid(std::vector<GameObject*> vEnnemiesList);
 };
 

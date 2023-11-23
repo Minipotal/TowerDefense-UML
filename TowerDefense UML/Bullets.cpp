@@ -1,4 +1,5 @@
 #include "Bullets.h"
+#include "Math.h"
 
 Bullets::Bullets(Towers* pTower, Vect2 pos, float fDiametre, int iDamage, float color) : GameObject(pos, fDiametre, color, 1, 1)
 {
@@ -23,4 +24,18 @@ void Bullets::Movement(float fDeltaTime)
 	vNewPos.setX(_pos.x() + (vDirection.x() * 350) * fDeltaTime);
 	vNewPos.setY(_pos.y() + (vDirection.y() * 350) * fDeltaTime);
 	SetPosition(vNewPos);
+}
+
+void Bullets::EnnemiesColid(std::vector<GameObject*> vEnnemiesList)
+{
+	for (int i = 0; i < vEnnemiesList.size(); i++)
+	{
+		if (Math::CircleToCircleColid(_pos, _size.x(), vEnnemiesList[i]->pos(), vEnnemiesList[i]->size().x()) == true)
+		{
+			vEnnemiesList[i]->minusHp(_damage);
+			_tower->RemoveFromBulletsList(this);
+			delete(this);
+		}
+	}
+	
 }
