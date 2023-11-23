@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 class Towers;
+class Ressources;
 
 class Cases : public GameObject
 {
@@ -12,8 +13,7 @@ private:
 public:
 	Cases(Vect2 pos, Vect2 size, float color, int speed, int life);
 
-	void destroy();
-	void upgrade();
-	void buy(Towers* o_tower);
+	void destroy(Ressources* o_ressources);
+	void upgrade(Ressources* o_ressources);
+	void buy(Towers* o_tower, Ressources* o_ressources);
 };
-
