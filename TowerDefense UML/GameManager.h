@@ -20,7 +20,7 @@ private:
 
 	std::vector<Towers*> o_towers;
 	std::vector<std::vector<Ennemies*>> o_ennemies;
-	std::vector<Cases*> o_cases;
+	std::vector<std::vector<Cases*>> o_cases;
 
 	MWindow* o_window;
 	sf::RenderWindow* _window;
@@ -35,9 +35,6 @@ public:
 	{
 		None,
 		Game,
-		Build,
-		Upgrade,
-		Destroy,
 	};
 
 	static void Create();

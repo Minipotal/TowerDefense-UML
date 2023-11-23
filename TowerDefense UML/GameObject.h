@@ -20,5 +20,6 @@ public:
 	Vect2 size();
 
 	bool isPointInside(const sf::Vector2i& mousePos);
+	Shape* getShape();
 };
 

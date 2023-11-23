@@ -39,3 +39,8 @@ bool GameObject::isPointInside(const sf::Vector2i& mousePos)
 	return true;
 }
 
+Shape* GameObject::getShape()
+{
+	return nullptr; // a modif
+}
+

@@ -45,16 +45,28 @@ void GameManager::Initialize()
 	int caseLineCount = 10;
 	int caseColumnCount = 10;
 
+	/* init entities */
 	initMobs();
 
+	// cases
+	float startX = gameAreaStartX;
+	float startY = gameAreaStartY;
+	for (int i = 0; i < caseLineCount; i++)
+	{
+		for (int j = 0; j < caseColumnCount; j++)
+		{
+			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / startX, gameAreaHeight / startY), 0x63340b, 0, 0));
+			startX += gameAreaWidth / startX;
+		}
+		startX = gameAreaStartX;
+		startY += gameAreaHeight / startY;
+	}
+
+	/* init events */
 	EventManager::Get()->AddArea(Vect2(gameAreaStartX, gameAreaStartY), Vect2(gameAreaWidth, gameAreaHeight), GameArea::Game);
-
-	//for (int i ) 
-	
 	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Left, &buy);
-	EventManager::Get()->AddEvent(GameArea::Upgrade, sf::Mouse::Button::Middle, &upgrade);
-	EventManager::Get()->AddEvent(GameArea::Destroy, sf::Mouse::Button::Right, &destroy);
-
+	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Middle, &upgrade);
+	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Right, &destroy);
 }
 
 void GameManager::Create()
@@ -91,10 +103,13 @@ void GameManager::Mbuy()
 {
 	for (int i = 0; i < o_cases.size(); i++)
 	{
-		if (o_cases[i]->isPointInside(*_mousePos))
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			//o_cases[i]->buy(, _ressource); // a modif qu'and y'aura les tours
-			std::cout << "buy" << std::endl;
+			if (o_cases[i][j]->isPointInside(*_mousePos))
+			{
+				//o_cases[i]->buy(, _ressource); // a modif qu'and y'aura les tours
+				std::cout << "buy" << std::endl;
+			}
 		}
 	}
 }
@@ -103,21 +118,26 @@ void GameManager::Mupgrade()
 {
 	for (int i = 0; i < o_cases.size(); i++)
 	{
-		if (o_cases[i]->isPointInside(*_mousePos))
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			o_cases[i]->upgrade(_ressource);
+			if (o_cases[i][j]->isPointInside(*_mousePos))
+			{
+				o_cases[i][j]->upgrade(_ressource);
+			}
 		}
 	}
 }
-
 
 void GameManager::Mdestroy()
 {
 	for (int i = 0; i < o_cases.size(); i++)
 	{
-		if (o_cases[i]->isPointInside(*_mousePos))
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			o_cases[i]->destroy(_ressource);
+			if (o_cases[i][j]->isPointInside(*_mousePos))
+			{
+				o_cases[i][j]->destroy(_ressource);
+			}
 		}
 	}
 }
