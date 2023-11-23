@@ -9,9 +9,18 @@ int main()
     FileReader* o_file = new FileReader();
 
     o_file->readFileTxt("Files/test.txt");
-    o_file->readFileEnnemie("Files/csv_for_ennemi.txt");
+    o_file->readFileEnnemie("Files/csv_for_ennemi.csv");
+    o_file->readFileTower("Files/csv_for_tower.csv");
 
-    MWindow* o_window = new MWindow(Vect2(1000, 800), "Tower Defence");
+    o_file->getEnnemie(0);
+    o_file->getEnnemie(1);
+    o_file->getEnnemie(2);
+
+    o_file->getTower(0);
+    o_file->getTower(1);
+    o_file->getTower(2);
+
+    //MWindow* o_window = new MWindow(Vect2(1000, 800), "Tower Defence");
 
     std::this_thread::sleep_for(std::chrono::seconds(5));
 

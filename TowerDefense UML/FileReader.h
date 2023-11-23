@@ -5,6 +5,10 @@
 #include <string>
 #include <vector>
 #include <string>
+#include "Vect.h"
+
+class Towers;
+class Ennemies;
 
 class FileReader
 {
@@ -21,9 +25,13 @@ public:
 	void readFileEnnemie(std::string path);
 	void readFileTower(std::string path);
 	std::vector<std::vector<int>> getFile();
+	Ennemies* getEnnemie(int id);
+	Towers* getTower(int id);
 	int getFileHeight();
 
 private:
 	std::vector<std::vector<std::string>> readFileCsv(std::string path);
+	int randint(int a, int b);
+	int stringToHex(std::string str);
 };
 
