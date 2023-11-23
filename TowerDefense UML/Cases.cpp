@@ -38,4 +38,3 @@ void Cases::buy(Towers* o_tower, Ressources* o_ressources)
 		_isFilled = true;
 	}
 }
-
