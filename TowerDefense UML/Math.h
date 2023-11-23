@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
+
 namespace Math
 {
-	bool CircleToCircleColid(Vect2 vPosA, float fDiameterA, Vect2 vPosB, float fDiameterB);
+	bool CircleToCircleColid(Vect2 posCircle1, float fDiameterCircle1, Vect2 posCircle2, float fDiameterCircle2);
 };
-

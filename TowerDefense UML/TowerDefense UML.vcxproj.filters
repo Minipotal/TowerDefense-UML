@@ -99,6 +99,9 @@
     <ClCompile Include="FileReader.cpp">
       <Filter>Fichiers sources\FileReader</Filter>
     </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -137,9 +140,20 @@
     <ClInclude Include="FileReader.h">
       <Filter>Fichiers d%27en-tête\FileReader</Filter>
     </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\Tower Defense\Tower Defense\Files\mobs.txt">
+    <None Include="Files\csv_for_ennemi.csv">
+      <Filter>Fichiers de ressources\Files</Filter>
+    </None>
+    <None Include="Files\csv_for_tower.csv">
+      <Filter>Fichiers de ressources\Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Files\mobs.txt">
       <Filter>Fichiers de ressources\Files</Filter>
     </Text>
   </ItemGroup>

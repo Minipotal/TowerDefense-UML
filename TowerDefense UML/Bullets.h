@@ -1,13 +1,16 @@
 #pragma once
 
 #include "GameObject.h"
+#include "Towers.h"
 
 class Bullets : public GameObject
 {
 private:
 	int _damage;
+	Towers* _tower;
+	GameObject* _target;
 
 public:
-	Bullets(Vect2 pos, Vect2 size, float color, int speed, int life, int damage);
+	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, float color);
 };
 

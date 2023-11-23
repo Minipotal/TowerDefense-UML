@@ -1,6 +1,7 @@
 #include "Bullets.h"
 
-Bullets::Bullets(Vect2 pos, Vect2 size, float color, int speed, int life, int damage) : GameObject(pos, size, color, speed, life)
+Bullets::Bullets(Towers* pTower, Vect2 pos, float fDiametre, int iDamage, float color) : GameObject(pos, fDiametre, color, 1, 1)
 {
-	_damage = _damage;
+	_tower = pTower;
+	_damage = iDamage;
 }

@@ -1,12 +1,29 @@
 #include "GameObject.h"
 
-GameObject::GameObject(Vect2 pos, Vect2 size, float color, int speed, int life)
+GameObject::GameObject(Vect2 pos, Vect2 size, float color, int speed, int life) //rectangle
 {
 	_pos = pos;
 	_size = size;
 	_color = color;
 	_speed = speed;
 	_life = life;
+
+	_shape = new sf::RectangleShape(_size.getVector2f());
+	_shape->setPosition(_pos.getVector2f());
+	//_shape->setFillColor(color);
+}
+
+GameObject::GameObject(Vect2 pos, float rayon, float color, int speed, int life) //circle
+{
+	_pos = pos;
+	_size = (rayon*2, rayon*2);
+	_color = color;
+	_speed = speed;
+	_life = life;
+
+	_shape = new sf::CircleShape(rayon);
+	_shape->setPosition(_pos.getVector2f());
+	//_shape->setFillColor(cColor);
 }
 
 void GameObject::minusHp(int number)
@@ -30,6 +47,18 @@ Vect2 GameObject::size()
 }
 
 
+void GameObject::SetPosition(Vect2 vPos)
+{
+	_pos = vPos;
+	_shape->setPosition(vPos.getVector2f());
+}
+
+void GameObject::SetOrigin(Vect2 vPos)
+{
+	_shape->setOrigin(vPos.getVector2f());
+}
+
+
 bool GameObject::isPointInside(const sf::Vector2i& mousePos)
 {
 	if (mousePos.x < _pos.x() || mousePos.x > _pos.x() + _size.x())
@@ -41,6 +70,6 @@ bool GameObject::isPointInside(const sf::Vector2i& mousePos)
 
 Shape* GameObject::getShape()
 {
-	return nullptr; // a modif
+	return _shape;
 }
 
