@@ -42,13 +42,13 @@ int main()
             {
                 if (oEvent.mouseButton.button == sf::Mouse::Left)
                 {
-                    oTower->ShootBullet();
+                    sf::Vector2i vMousePos = sf::Mouse::getPosition(*pWindowRenderer);
                 }
             }
         }
 
         //UPDATE
-        oTower->ShootBullet();
+        oTower->ChooseTarget(oGameManager->EnemiesList);
         for (int i = 0; i < oTower->GetBulletsList().size(); i++)
         {
             oTower->GetBulletsList()[i]->Movement(fDeltaTime, pWindowRenderer);

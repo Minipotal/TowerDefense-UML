@@ -12,35 +12,28 @@ Towers::Towers(Vect2 vPos, Vect2 vSize, sf::Color cColor) : GameObject(vPos, vSi
 	_oClock.restart();
 }
 
-void Towers::ShootBullet(std::vector<Ennemies*> vEnnemiesList)
+void Towers::ChooseTarget(std::vector<Ennemies*> vEnnemiesList)
 {
 	//Choose Target
 	Ennemies* pTarget = NULL;
 	for (int i = 0; i < vEnnemiesList.size(); i++)
 	{
-		if (Math::CircleToCircleColid(_vPos,_iRange, vEnnemiesList[i]->GetPosition(), vEnnemiesList[i]->GetSize().x()))
+		if (Math::CircleToCircleColid(_vPos,_iRange, vEnnemiesList[i]->GetPosition(), vEnnemiesList[i]->GetSize().x()) == true)
 		{
 			int iTargetX = 0;
 			if (vEnnemiesList[i]->GetPosition().x() > iTargetX)
 			{
 				iTargetX = vEnnemiesList[i]->GetPosition().x();
 				pTarget = vEnnemiesList[i];
+				_pTarget = pTarget;
+				_iState = TowersStates::Targeting;
 			}
 		}
 	}
-
-
-
-
-	//Create Bullet
-	if (_oClock.getElapsedTime().asSeconds() >= 1)
+	if (pTarget == NULL)
 	{
-		float fBallDiametre = 20;
-		Vect2 vBallPos = _vPos;
-		Bullets* oBullet = new Bullets(this, _vPos, fBallDiametre, _iDamage, _cColor);
-		_vBulletsList.push_back(oBullet);
-		_oClock.restart();
-
+		_pTarget = NULL;
+		_iState = TowersStates::Idle;
 	}
 }
 
@@ -51,7 +44,15 @@ void Towers::StateMachine()
 	case Idle:
 		break;
 	case Targeting:
-		break;
+		if (_oClock.getElapsedTime().asSeconds() >= 1)
+		{
+			float fBallDiametre = 20;
+			Vect2 vBallPos = _vPos;
+			Bullets* oBullet = new Bullets(this, _vPos, fBallDiametre, _iDamage, _cColor);
+			_vBulletsList.push_back(oBullet);
+			_oClock.restart();
+
+		};
 	default:
 		break;
 	}

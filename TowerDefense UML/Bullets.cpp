@@ -11,11 +11,11 @@ Bullets::Bullets(Towers* pTower, Vect2 vPos, float fDiametre, int iDamage, sf::C
 
 void Bullets::Movement(float fDeltaTime, sf::RenderWindow* pWindow)
 {
-	sf::Vector2i vMousePos = sf::Mouse::getPosition(*pWindow);
+	Vect2 vTargetPos = _pTarget->GetPosition();
 
 	Vect2 vDirection;
-	vDirection.setX(vMousePos.x - _vPos.x());
-	vDirection.setY(vMousePos.y - _vPos.y());
+	vDirection.setX(vTargetPos.x() - _vPos.x());
+	vDirection.setY(vTargetPos.y() - _vPos.y());
 
 	float fNorme = sqrt((vDirection.x() * vDirection.x()) + (vDirection.y() * vDirection.y()));
 

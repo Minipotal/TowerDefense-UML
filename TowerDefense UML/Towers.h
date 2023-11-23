@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Bullets.h"
+#include "Ennemies.h"
 
 typedef enum TowersStates
 {
@@ -16,13 +17,14 @@ private:
 	int _iDamage;
 	int _iRange;
 	int _iCost;
+	Ennemies* _pTarget;
 	sf::Color _cColor;
 	float _fCooldown;
 	sf::Clock _oClock;
 
 public:
 	Towers(Vect2 vPos, Vect2 vSize, sf::Color cColor);
-	void ShootBullet(std::vector<Ennemies*> vEnnemiesList);
+	void ChooseTarget(std::vector<Ennemies*> vEnnemiesList);
 
 	void StateMachine();
 
