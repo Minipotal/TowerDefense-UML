@@ -1,5 +1,6 @@
 #include "Window.h"
 
+#include "GameObject.h"
 
 MWindow::MWindow(Vect2 size, std::string name)
 {
@@ -13,7 +14,12 @@ void MWindow::display()
 
 }
 
-Window* MWindow::getWindow()
+sf::RenderWindow* MWindow::getWindow()
 {
 	return _window;
+}
+
+void MWindow::winDraw(GameObject* o_gameObject)
+{
+	_window->draw(*o_gameObject->getShape());
 }

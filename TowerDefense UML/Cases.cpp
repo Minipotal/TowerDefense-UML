@@ -11,32 +11,29 @@ Cases::Cases(Vect2 pos, Vect2 size, float color, int speed, int life) : GameObje
 }
 
 
-void Cases::destroy()
+void Cases::destroy(Ressources* o_ressources)
 {
 	if (!_isFilled) return;
-	GameManager gm = GameManager();
-	gm._ressources->_gold += _placedTower->getCost() * .8f;
+	o_ressources->_gold += (int)(_placedTower->getCost() * .8f);
 	_placedTower = new Towers();
 	_isFilled = false;
 }
-void Cases::upgrade()
+void Cases::upgrade(Ressources* o_ressources)
 {
 	if (!_isFilled) return;
-	GameManager gm = GameManager();
-	if (gm._ressources->_gold > _placedTower->getCost())
+	if (o_ressources->_gold > _placedTower->getCost())
 	{
-		gm._ressources->_gold -= _placedTower->getCost();
+		o_ressources->_gold -= _placedTower->getCost();
 		_placedTower->levelUp();
 		_isFilled = true;
 	}
 }
-void Cases::buy(Towers* o_tower)
+void Cases::buy(Towers* o_tower, Ressources* o_ressources)
 {
 	if (_isFilled) return;
-	GameManager gm = GameManager();
-	if (gm._ressources->_gold > o_tower->getCost())
+	if (o_ressources->_gold > o_tower->getCost())
 	{
-		gm._ressources->_gold -= o_tower->getCost();
+		o_ressources->_gold -= o_tower->getCost();
 		_placedTower = o_tower;
 		_isFilled = true;
 	}
