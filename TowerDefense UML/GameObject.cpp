@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-GameObject::GameObject(Vect2 pos, Vect2 size, float color, int speed, int life) //rectangle
+GameObject::GameObject(Vect2 pos, Vect2 size, MyColor color, int speed, int life) //rectangle
 {
 	_pos = pos;
 	_size = size;
@@ -10,10 +10,10 @@ GameObject::GameObject(Vect2 pos, Vect2 size, float color, int speed, int life) 
 
 	_shape = new sf::RectangleShape(_size.getVector2f());
 	_shape->setPosition(_pos.getVector2f());
-	//_shape->setFillColor(color);
+	_shape->setFillColor(_color.getSfColor());
 }
 
-GameObject::GameObject(Vect2 pos, float rayon, float color, int speed, int life) //circle
+GameObject::GameObject(Vect2 pos, float rayon, MyColor color, int speed, int life) //circle
 {
 	_pos = pos;
 	_size = (rayon*2, rayon*2);
@@ -23,7 +23,7 @@ GameObject::GameObject(Vect2 pos, float rayon, float color, int speed, int life)
 
 	_shape = new sf::CircleShape(rayon);
 	_shape->setPosition(_pos.getVector2f());
-	//_shape->setFillColor(cColor);
+	_shape->setFillColor(_color.getSfColor());
 }
 
 void GameObject::minusHp(int number)

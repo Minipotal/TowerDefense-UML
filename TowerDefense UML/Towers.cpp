@@ -7,7 +7,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 
-Towers::Towers(Vect2 pos, Vect2 size, float color, int damage, float cooldown, int range, int cost, int bulletSpeed) : GameObject(pos, size, color, 0, 0) {};
+Towers::Towers(Vect2 pos, Vect2 size, MyColor color, int damage, float cooldown, int range, int cost, int bulletSpeed) : GameObject(pos, size, color, 0, 0) {};
 Towers::Towers() : Towers({ 0, 0 }, { 0, 0 }, 0x000000, 0, 0, 0, 0, 0) { };
 
 int Towers::getCost()

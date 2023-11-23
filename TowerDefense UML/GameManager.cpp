@@ -77,7 +77,7 @@ void GameManager::Initialize()
 	{
 		for (int j = 0; j < caseColumnCount; j++)
 		{
-			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / caseLineCount, gameAreaHeight / caseColumnCount), 0x63340b, 0, 0));
+			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / caseLineCount, gameAreaHeight / caseColumnCount), { 0x63340b }, 0, 0));
 			_entities[GameManager::GameOLabel::Case].push_back(o_cases[i][j]);
 			startX += gameAreaWidth / caseLineCount;
 		}
@@ -111,6 +111,7 @@ void GameManager::initMobs()
 {
 	FileReader* o_file = new FileReader();
 	o_file->readFileTxt("Files/mobs.txt");
+	o_file->readFileEnnemie("Files/csv_for_ennemi.csv");
 
 	o_ennemies.resize(o_file->getFile().size());
 
@@ -119,14 +120,22 @@ void GameManager::initMobs()
 		for (int j = 0; j < o_file->getFile()[i].size(); j++)
 		{
 			o_ennemies[i].resize(j);
-			//o_ennemies[i][j].push_back(o_file->getFile()[i][j]); // id pour le moment, changer ave les bons params
+			o_ennemies[i].push_back(o_file->getEnnemie(o_file->getFile()[i][j]));
 		}
 	}
 }
 
 void GameManager::initTowers()
 {
+	FileReader* o_file = new FileReader();
+	o_file->readFileTower("Files/csv_for_tower.csv");
 
+	int max = 3;
+	o_towers.resize(max);
+	for (int id = 0; id < max; id++)
+	{
+		o_towers.push_back(o_file->getTower(id));
+	}
 }
 
 void GameManager::Mbuy()
@@ -186,6 +195,7 @@ void GameManager::Mdestroy()
 void GameManager::MTower1()
 {
 	_selectedTower = o_towers[0];
+
 }
 
 void GameManager::MTower2()
@@ -203,6 +213,8 @@ void GameManager::game()
 	while (_window && _window->isOpen())
 	{
 		sf::Clock oClock;
+
+		EventManager::Get()->update(_window);
 
 		if (_base->getHp() == 0)
 		{

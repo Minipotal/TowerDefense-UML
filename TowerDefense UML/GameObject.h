@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vect.h"
+#include "Colors.h"
 
 class GameObject
 {
@@ -8,15 +9,15 @@ private:
 	sf::Shape* _shape;
 
 protected:
-	float _color;
+	MyColor _color;
 	int _speed;
 	int _life;
 	Vect2 _pos;
 	Vect2 _size;
 
 public:
-	GameObject(Vect2 pos, Vect2 size, float color, int speed, int life);
-	GameObject(Vect2 pos, float rayon, float color, int speed, int life);
+	GameObject(Vect2 pos, Vect2 size, MyColor color, int speed, int life);
+	GameObject(Vect2 pos, float rayon, MyColor color, int speed, int life);
 
 	void minusHp(int number);
 	void move(Vect2 direction);

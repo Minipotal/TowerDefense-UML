@@ -4,7 +4,7 @@
 #include "GameManager.h"
 #include "Ressources.h"
 
-Cases::Cases(Vect2 pos, Vect2 size, float color, int speed, int life) : GameObject(pos, size, color, speed, life)
+Cases::Cases(Vect2 pos, Vect2 size, MyColor color, int speed, int life) : GameObject(pos, size, color, speed, life)
 {
 	_placedTower = new Towers();
 	_isFilled = false;
