@@ -11,7 +11,7 @@ private:
 	Towers* _placedTower;
 
 public:
-	Cases(Vect2 pos, Vect2 size, float color, int speed, int life);
+	Cases(Vect2 vPos, Vect2 vSize);
 
 	void destroy(Ressources* o_ressources);
 	void upgrade(Ressources* o_ressources);

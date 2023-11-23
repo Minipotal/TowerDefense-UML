@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include "Ennemies.h"
 
 #include <map>
 #include <SFML/Graphics.hpp>

@@ -1,10 +1,16 @@
 #pragma once
 
-#include "Vect.h"
+#include "GameObject.h"
 
-class Ennemies
+class Ennemies : public GameObject
 {
+private :
+	int _iID, _iDamage, _iGold;
+	int _iState;
+	sf::Color cColor, cDeadColor;
+	Vect2 _vDirection = Vect2(1,0);
+  
 public:
-	Ennemies(Vect2 pos, float size, float color, float deadColor, int speed, int life, int damage, int gold);
+	Ennemies(float fDiameter, sf::Color cColor, sf::Color cDeadColor, int iSpeed, int iLife, int iDamage, int iGold);
 };
 

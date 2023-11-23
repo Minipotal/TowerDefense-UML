@@ -1,12 +1,12 @@
 #include "Cases.h"
-
 #include "Towers.h"
 #include "GameManager.h"
 #include "Ressources.h"
+#include<SFML/Graphics/Color.hpp>
 
-Cases::Cases(Vect2 pos, Vect2 size, float color, int speed, int life) : GameObject(pos, size, color, speed, life)
+Cases::Cases(Vect2 vPos, Vect2 vSize) : GameObject(vPos, vSize, sf::Color::Red)
 {
-	_placedTower = new Towers();
+	_placedTower = new Towers(vPos, vSize, sf::Color(255, 0, 0));
 	_isFilled = false;
 }
 
