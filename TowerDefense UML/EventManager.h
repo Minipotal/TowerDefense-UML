@@ -30,7 +30,9 @@ private:
 
 public:
 	std::vector<Area> m_oAreas;
+	std::vector<Area> m_oAreasKeyboard;
 	std::map<int, std::map<sf::Mouse::Button, event>> _dict;
+	std::map<int, std::map<sf::Keyboard::Key, event>> _dictKeyboard;
 
 	static void Create()
 	{
@@ -50,12 +52,23 @@ public:
 		_dict[area][eEventType] = oFunction;
 	}
 
+	void AddEventKeyBoard(GameManager::GameArea area, sf::Keyboard::Key eEventType, event oFunction)
+	{
+		_dictKeyboard[area][eEventType] = oFunction;
+	}
+
 	void AddArea(Vect2 pos, Vect2 size, GameManager::GameArea eGameArea)
 	{
 		m_oAreas.push_back(Area(pos, size, eGameArea));
 	}
 
+	void AddAreaKeyBoard(Vect2 pos, Vect2 size, GameManager::GameArea eGameArea)
+	{
+		m_oAreasKeyboard.push_back(Area(pos, size, eGameArea));
+	}
+
 	void CheckEvent(GameManager::GameArea area, sf::Mouse::Button eventName);
+	void CheckEventKeyBoard(GameManager::GameArea area, sf::Keyboard::Key eventName);
 
 	void update(sf::RenderWindow* _window);
 };

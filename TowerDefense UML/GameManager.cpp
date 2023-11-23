@@ -26,6 +26,21 @@ void buy()
 	GameManager::Get()->Mbuy();
 }
 
+void tower1()
+{
+	GameManager::Get()->MTower1();
+}
+
+void tower2()
+{
+	GameManager::Get()->MTower2();
+}
+
+void tower3()
+{
+	GameManager::Get()->MTower3();
+}
+
 void GameManager::Initialize()
 {
 	float windowWidth = 1920;
@@ -65,10 +80,16 @@ void GameManager::Initialize()
 	}
 
 	/* init events */
+	EventManager::Get()->AddAreaKeyBoard(Vect2(0,0), Vect2(0,0), GameArea::Game);
 	EventManager::Get()->AddArea(Vect2(gameAreaStartX, gameAreaStartY), Vect2(gameAreaWidth, gameAreaHeight), GameArea::Game);
+
 	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Left, &buy);
 	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Middle, &upgrade);
 	EventManager::Get()->AddEvent(GameArea::Game, sf::Mouse::Button::Right, &destroy);
+
+	EventManager::Get()->AddEventKeyBoard(GameArea::Game, sf::Keyboard::Key::Num1, &tower1);
+	EventManager::Get()->AddEventKeyBoard(GameArea::Game, sf::Keyboard::Key::Num2, &tower2);
+	EventManager::Get()->AddEventKeyBoard(GameArea::Game, sf::Keyboard::Key::Num3, &tower3);
 }
 
 void GameManager::Create()
@@ -104,14 +125,17 @@ void GameManager::initTowers()
 
 void GameManager::Mbuy()
 {
-	for (int i = 0; i < o_cases.size(); i++)
+	if (_selectedTower != nullptr)
 	{
-		for (int j = 0; j < o_cases[i].size(); j++)
+		for (int i = 0; i < o_cases.size(); i++)
 		{
-			if (o_cases[i][j]->isPointInside(*_mousePos))
+			for (int j = 0; j < o_cases[i].size(); j++)
 			{
-				//o_cases[i]->buy(, _ressource); // a modif qu'and y'aura les tours
-				std::cout << "buy" << std::endl;
+				if (o_cases[i][j]->isPointInside(*_mousePos))
+				{
+					o_cases[i][j]->buy(_selectedTower, _ressource); // a modif qu'and y'aura les tours
+					std::cout << "buy" << std::endl;
+				}
 			}
 		}
 	}
@@ -119,13 +143,16 @@ void GameManager::Mbuy()
 
 void GameManager::Mupgrade()
 {
-	for (int i = 0; i < o_cases.size(); i++)
+	if (_selectedTower != nullptr)
 	{
-		for (int j = 0; j < o_cases[i].size(); j++)
+		for (int i = 0; i < o_cases.size(); i++)
 		{
-			if (o_cases[i][j]->isPointInside(*_mousePos))
+			for (int j = 0; j < o_cases[i].size(); j++)
 			{
-				o_cases[i][j]->upgrade(_ressource);
+				if (o_cases[i][j]->isPointInside(*_mousePos))
+				{
+					o_cases[i][j]->upgrade(_ressource);
+				}
 			}
 		}
 	}
@@ -133,16 +160,34 @@ void GameManager::Mupgrade()
 
 void GameManager::Mdestroy()
 {
-	for (int i = 0; i < o_cases.size(); i++)
+	if (_selectedTower != nullptr)
 	{
-		for (int j = 0; j < o_cases[i].size(); j++)
+		for (int i = 0; i < o_cases.size(); i++)
 		{
-			if (o_cases[i][j]->isPointInside(*_mousePos))
+			for (int j = 0; j < o_cases[i].size(); j++)
 			{
-				o_cases[i][j]->destroy(_ressource);
+				if (o_cases[i][j]->isPointInside(*_mousePos))
+				{
+					o_cases[i][j]->destroy(_ressource);
+				}
 			}
 		}
 	}
+}
+
+void GameManager::MTower1()
+{
+	_selectedTower = o_towers[0];
+}
+
+void GameManager::MTower2()
+{
+	_selectedTower = o_towers[1];
+}
+
+void GameManager::MTower3()
+{
+	_selectedTower = o_towers[2];
 }
 
 void GameManager::game()
@@ -153,5 +198,12 @@ void GameManager::game()
 		{
 			std::cout << "You loose" << std::endl;
 		}
+
+		//_window->clear();
+
+		//for (int i = 0; i < GoLabel::total; i++)
+		//{
+		//	_o_window->winDraw(_entities[i]);
+		//}
 	}
 }

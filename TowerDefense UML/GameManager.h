@@ -26,6 +26,8 @@ private:
 	sf::RenderWindow* _window;
 	Base* _base;
 
+	Towers* _selectedTower;
+
 public:
 
 	Ressources* _ressource;
@@ -51,5 +53,9 @@ public:
 	void Mbuy();
 	void Mupgrade();
 	void Mdestroy();
+
+	void MTower1();
+	void MTower2();
+	void MTower3();
 };
 

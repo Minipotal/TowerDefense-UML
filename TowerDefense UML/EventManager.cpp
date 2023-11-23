@@ -13,6 +13,12 @@ void EventManager::CheckEvent(GameManager::GameArea area, sf::Mouse::Button even
 	}
 }
 
+void EventManager::CheckEventKeyBoard(GameManager::GameArea area, sf::Keyboard::Key eventName) {
+	if (_dictKeyboard.find(area) != _dictKeyboard.end() && _dictKeyboard[area].find(eventName) != _dictKeyboard[area].end()) {
+		_dictKeyboard[area][eventName]();
+	}
+}
+
 void EventManager::update(sf::RenderWindow* _window)
 {
 	sf::Event event;
@@ -33,6 +39,13 @@ void EventManager::update(sf::RenderWindow* _window)
 				{
 					CheckEvent(m_oAreas[i]._eGameArea, event.mouseButton.button);
 				}
+			}
+		}
+		else if (event.type == sf::Event::KeyPressed)
+		{
+			for (int i = 0; i < m_oAreasKeyboard.size(); i++)
+			{
+				CheckEventKeyBoard(m_oAreasKeyboard[i]._eGameArea, event.key.code);
 			}
 		}
 	}

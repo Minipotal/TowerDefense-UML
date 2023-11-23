@@ -19,7 +19,10 @@ sf::RenderWindow* MWindow::getWindow()
 	return _window;
 }
 
-void MWindow::winDraw(GameObject* o_gameObject)
+void MWindow::winDraw(std::vector<GameObject*> o_gameObject)
 {
-	_window->draw(*o_gameObject->getShape());
+	for (int i = 0; i < o_gameObject.size(); i++)
+	{
+		_window->draw(*o_gameObject[i]->getShape());
+	}
 }

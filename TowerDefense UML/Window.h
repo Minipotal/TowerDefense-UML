@@ -19,6 +19,6 @@ public:
 	void display();
 
 	sf::RenderWindow* getWindow();
-	void winDraw(GameObject* o_gameObject);
+	void winDraw(std::vector<GameObject*> o_gameObject);
 };
 
