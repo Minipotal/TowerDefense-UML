@@ -1,0 +1,4 @@
+Name,ID,Color,ShootRate,BulletSpeed,Range,BulletDamage,Cost
+classic,0,0x0000FF,18,13,17,10,25
+original,1,0xFF0000,25,20,9,15,50
+sniper,2,0x00FF00,5,50,25,20,75
