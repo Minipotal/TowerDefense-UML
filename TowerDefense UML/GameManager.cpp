@@ -8,6 +8,7 @@
 #include "Window.h"
 #include "Base.h"
 #include "FileReader.h"
+#include "GameObject.h"
 
 GameManager* GameManager::_pInstance = nullptr;
 
@@ -64,6 +65,7 @@ void GameManager::Initialize()
 	
 	/* init entities */
 	initMobs();
+	initTowers();
 
 	// cases
 	float startX = gameAreaStartX;
@@ -73,6 +75,7 @@ void GameManager::Initialize()
 		for (int j = 0; j < caseColumnCount; j++)
 		{
 			o_cases[i].push_back(new Cases(Vect2(startX, startY), Vect2(gameAreaWidth / startX, gameAreaHeight / startY), 0x63340b, 0, 0));
+			_entities[1].push_back(o_cases[i][j]);
 			startX += gameAreaWidth / startX;
 		}
 		startX = gameAreaStartX;
@@ -133,7 +136,8 @@ void GameManager::Mbuy()
 			{
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
-					o_cases[i][j]->buy(_selectedTower, _ressource); // a modif qu'and y'aura les tours
+					o_cases[i][j]->buy(_selectedTower, _ressource);
+					_entities[0].push_back(_selectedTower);
 					std::cout << "buy" << std::endl;
 				}
 			}
@@ -168,6 +172,7 @@ void GameManager::Mdestroy()
 			{
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
+					_entities[0].erase(std::remove(_entities[0].begin(), _entities[0].end(), o_cases[i][j]->getTower()), _entities[0].end());
 					o_cases[i][j]->destroy(_ressource);
 				}
 			}
@@ -199,11 +204,11 @@ void GameManager::game()
 			std::cout << "You loose" << std::endl;
 		}
 
-		//_window->clear();
+		_window->clear();
 
-		//for (int i = 0; i < GoLabel::total; i++)
-		//{
-		//	_o_window->winDraw(_entities[i]);
-		//}
+		for (int i = 0; i < _entities.size(); i++)
+		{
+			o_window->winDraw(_entities[i]);
+		}
 	}
 }

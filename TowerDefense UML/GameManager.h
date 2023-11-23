@@ -10,6 +10,7 @@ class Cases;
 class Ennemies;
 class MWindow;
 class Base;
+class GameObject;
 
 class GameManager
 {
@@ -28,6 +29,8 @@ private:
 
 	Towers* _selectedTower;
 
+	std::map<int, std::vector<GameObject*>> _entities;
+
 public:
 
 	Ressources* _ressource;
@@ -37,6 +40,13 @@ public:
 	{
 		None,
 		Game,
+	};
+
+	typedef enum GameOLabel
+	{
+		Tower = 0,
+		Case = 1,
+		Ennemi = 2,
 	};
 
 	static void Create();

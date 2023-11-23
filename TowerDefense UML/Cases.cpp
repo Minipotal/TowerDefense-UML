@@ -39,3 +39,8 @@ void Cases::buy(Towers* o_tower, Ressources* o_ressources)
 	}
 }
 
+Towers* Cases::getTower()
+{
+	return _placedTower;
+}
+

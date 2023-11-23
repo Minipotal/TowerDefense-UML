@@ -16,4 +16,6 @@ public:
 	void destroy(Ressources* o_ressources);
 	void upgrade(Ressources* o_ressources);
 	void buy(Towers* o_tower, Ressources* o_ressources);
+
+	Towers* getTower();
 };
