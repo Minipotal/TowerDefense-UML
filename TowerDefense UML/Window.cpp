@@ -26,3 +26,8 @@ void MWindow::winDraw(std::vector<GameObject*> o_gameObject)
 		_window->draw(*o_gameObject[i]->getShape());
 	}
 }
+
+void MWindow::winDraw(GameObject* gameObject)
+{
+		_window->draw(*gameObject->getShape());
+}

@@ -217,7 +217,7 @@ Ennemies* FileReader::getEnnemie(int id)
         }
     }
 
-    Ennemies* newEnnemie = new Ennemies(Vect2(0, 0), 0, ColorFull, ColorLow, randint(SpeedMin, SpeedMax), randint(LifeMin, LifeMax), randint(DamageMin, DamageMax), randint(GoldMin, GoldMax));
+    Ennemies* newEnnemie = new Ennemies(Vect2(0, 0), 30, ColorFull, ColorLow, randint(SpeedMin, SpeedMax), randint(LifeMin, LifeMax), randint(DamageMin, DamageMax), randint(GoldMin, GoldMax));
     return newEnnemie;
 }
 

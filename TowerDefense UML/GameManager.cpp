@@ -46,24 +46,25 @@ void GameManager::Initialize()
 {
 	float windowWidth = 1920;
 	float windowHeight = 1080;
-	o_window = new MWindow(Vect2(windowWidth, windowHeight), "Tower Defense");
-	_window = o_window->getWindow();
-	_ressource = new Ressources();
-	_mousePos = new sf::Vector2i();
-	_base = new Base(Vect2(0, 0), Vect2(0, 0), 0xee33ff, 0, 10);
-	_deltaTime = 0;
 
-	_entities.resize(GameManager::GameOLabel::Total);
-
-	float gameAreaWidth = windowWidth * 0.8;
+	float gameAreaWidth = windowWidth * 1.0;
 	float gameAreaHeight = windowHeight * 1.0;
 
 	float gameAreaStartX = 0;
 	float gameAreaStartY = 0;
-	
+
 	int caseLineCount = 10;
 	int caseColumnCount = 10;
 
+	o_window = new MWindow(Vect2(windowWidth, windowHeight), "Tower Defense");
+	_window = o_window->getWindow();
+	_ressource = new Ressources();
+	_mousePos = new sf::Vector2i();
+	_base = new Base(Vect2(1920 - 50, (windowHeight / 2) - (gameAreaHeight / caseColumnCount)), Vect2(50, (gameAreaHeight / caseColumnCount) * 2), 0x1CCFC9, 0, 10);
+	_deltaTime = 0;
+	_entities.resize(GameManager::GameOLabel::Total);
+	_mobsArea = new GameObject(Vect2(0, (windowHeight/ 2) - (gameAreaHeight / caseColumnCount)), Vect2(windowWidth, (gameAreaHeight / caseColumnCount)*2), { 0x000000 }, 0, 0);
+	_road = new GameObject(Vect2(0, (windowHeight / 2) - (gameAreaHeight / caseColumnCount) + (gameAreaHeight / caseColumnCount)/2), Vect2(windowWidth, (gameAreaHeight / caseColumnCount)), { 0x696969 }, 0, 0);
 	o_cases.resize(caseLineCount);
 	
 	/* init entities */
@@ -238,7 +239,12 @@ void GameManager::game()
 		{
 			o_window->winDraw(_entities[i]);
 		}
-		o_window->display();
+
+		o_window->winDraw(_mobsArea);
+		o_window->winDraw(_road);
+		o_window->winDraw(_base);
+
+		_window->display();
 
 		_deltaTime = oClock.restart().asSeconds();
 	}

@@ -18,6 +18,8 @@ private:
 	GameManager() {};
 	void Initialize();
 
+	float _deltaTime;
+
 	std::vector<Towers*> o_towers;
 	std::vector<std::vector<Ennemies*>> o_ennemies;
 	std::vector<std::vector<Cases*>> o_cases;
@@ -30,7 +32,8 @@ private:
 
 	std::vector<std::vector<GameObject*>> _entities;
 
-	float _deltaTime;
+	GameObject* _mobsArea;
+	GameObject* _road;
 
 public:
 

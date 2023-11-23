@@ -11,6 +11,8 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor color, int speed, int life
 	_shape = new sf::RectangleShape(_size.getVector2f());
 	_shape->setPosition(_pos.getVector2f());
 	_shape->setFillColor(_color.getSfColor());
+	_shape->setOutlineThickness(3);
+	_shape->setOutlineColor(sf::Color::Black);
 }
 
 GameObject::GameObject(Vect2 pos, float rayon, MyColor color, int speed, int life) //circle
