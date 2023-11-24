@@ -227,6 +227,8 @@ void GameManager::game()
 		sf::Clock oClock;
 
 		EventManager::Get()->update(_window);
+		_ressource->setIron(1);
+		_ressource->setWood(2);
 
 		if (_base->getHp() <= 0)
 		{
