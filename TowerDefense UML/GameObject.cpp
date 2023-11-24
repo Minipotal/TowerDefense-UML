@@ -96,7 +96,9 @@ sf::Color GameObject::getColor()
 {
 	return _color.getSfColor();
 }
-
+void GameObject::StateMachine()
+{
+}
 void GameObject::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 {
 }
@@ -110,5 +112,14 @@ const std::vector<GameObject*>& GameObject::GetBulletsList()
 }
 
 void GameObject::Movement(float deltaTime)
+{
+}
+
+int GameObject::GetLife()
+{
+	return _life;
+}
+
+void GameObject::EnnemiesColid(std::vector<GameObject*> vEnnemiesList)
 {
 }

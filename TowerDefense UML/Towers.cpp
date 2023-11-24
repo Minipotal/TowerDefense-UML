@@ -33,8 +33,7 @@ void Towers::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 	GameObject* pTarget = NULL;
 	for (int i = 0; i < vEnnemiesList.size(); i++)
 	{
-		bool test = Math::CircleToCircleColid(_pos, _range, vEnnemiesList[i]->pos(), vEnnemiesList[i]->size().x());
-		if (Math::CircleToCircleColid(_pos, _range, vEnnemiesList[i]->pos(), vEnnemiesList[i]->size().x()) == true)
+		if (Math::TowerRangeCheck(_pos, _size, _range, vEnnemiesList[i]->pos(), vEnnemiesList[i]->size()) == true)
 		{
 			int iTargetX = 0;
 			if (vEnnemiesList[i]->pos().x() > iTargetX)
@@ -49,6 +48,11 @@ void Towers::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 	if (pTarget == NULL)
 	{
 		_pTarget = NULL;
+		for (int i = 0; i < _vBulletsList.size(); i++)
+		{
+			RemoveFromBulletsList(_vBulletsList[i]);
+			delete(_vBulletsList[i]);
+		}
 		_state = TowersStates::Idle;
 	}
 }
@@ -63,8 +67,8 @@ void Towers::StateMachine()
 		if (_oClock.getElapsedTime().asSeconds() >= 1)
 		{
 			float fBallDiametre = 20;
-			Vect2 vBallPos = _pos;
-			Bullets* oBullet = new Bullets(this, _pos, fBallDiametre, _damage, _color);
+			Vect2 vBallPos = _pos + _size/2;
+			Bullets* oBullet = new Bullets(this, vBallPos, fBallDiametre, _damage, _color, _pTarget);
 			_vBulletsList.push_back(oBullet);
 			_oClock.restart();
 
@@ -79,7 +83,7 @@ const std::vector<GameObject*>& Towers::GetBulletsList()
 {
 	return (_vBulletsList);
 }
-void Towers::RemoveFromBulletsList(Bullets* pBullets)
+void Towers::RemoveFromBulletsList(GameObject* pBullets)
 {
 	_vBulletsList.erase(std::remove(_vBulletsList.begin(), _vBulletsList.end(), pBullets), _vBulletsList.end());
 }

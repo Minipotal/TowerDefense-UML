@@ -32,9 +32,9 @@ public:
 
 	void ChooseTarget(std::vector<GameObject*> vEnnemiesList) override;
 
-	void StateMachine();
+	void StateMachine() override;
 
 	//Ball Gestion
 	const std::vector<GameObject*>& GetBulletsList() override ;
-	void RemoveFromBulletsList(Bullets* pBullets);
+	void RemoveFromBulletsList(GameObject* pBullets);
 };

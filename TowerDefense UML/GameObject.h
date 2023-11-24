@@ -38,9 +38,13 @@ public:
 	sf::Color getColor();
 	int GetSpeed();
 
+	int GetLife();
+
+	virtual void StateMachine();
 	virtual void ChooseTarget(std::vector<GameObject*> vEnnemiesList);
 	virtual const std::vector<GameObject*>& GetBulletsList();
 
 	virtual void Movement(float deltaTime);
+	virtual void EnnemiesColid(std::vector<GameObject*> vEnnemiesList);
 };
 

@@ -3,5 +3,6 @@
 
 namespace Math
 {
-	bool CircleToCircleColid(Vect2 posCircle1, float fDiameterCircle1, Vect2 posCircle2, float fDiameterCircle2);
+	bool TowerRangeCheck(Vect2 towerPos, Vect2 towerSize, int towerRange, Vect2 ennemiePos, Vect2 ennemieSize);
+	bool BulletsToEnnemiesColid(Vect2 bulletPos, Vect2 bulletSize, Vect2 ennemiePos, Vect2 ennemieSize);
 };

@@ -8,3 +8,5 @@ Ennemies::Ennemies(Vect2 pos, float rayon, MyColor color, MyColor deadColor, int
 	_deadColor = deadColor;
 	_damage = damage;
 }
+
+

@@ -11,9 +11,9 @@ private:
 	GameObject* _target;
 
 public:
-	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, MyColor color);
+	Bullets(Towers* pTowers, Vect2 vPos, float iDiametre, int iDamage, MyColor color, GameObject* pTarget);
 
 	void Movement(float fDeltaTime);
-	void EnnemiesColid(std::vector<GameObject*> vEnnemiesList);
+	void EnnemiesColid(std::vector<GameObject*> vEnnemiesList) override;
 };
 

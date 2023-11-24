@@ -236,21 +236,30 @@ void GameManager::game()
 		for (int i = 0; i < _entities[GameManager::GameOLabel::Tower].size(); i++)
 		{
 			_entities[GameManager::GameOLabel::Tower][i]->ChooseTarget(_entities[1]);
+			_entities[GameManager::GameOLabel::Tower][i]->StateMachine();
 
 			for (int j = 0; j < _entities[GameManager::GameOLabel::Tower][i]->GetBulletsList().size(); j++)
 			{
 				_entities[GameManager::GameOLabel::Tower][i]->GetBulletsList()[j]->Movement(_deltaTime);
+				_entities[GameManager::GameOLabel::Tower][i]->GetBulletsList()[j]->EnnemiesColid(_entities[GameManager::GameOLabel::Ennemi]);
+
+
 			}
 		}
 
 		for (int i = 0; i < _entities[GameManager::GameOLabel::Ennemi].size(); i++)
 		{
 			_entities[GameManager::GameOLabel::Ennemi][i]->move(Vect2(1, 0), _entities[GameManager::GameOLabel::Ennemi][i]->GetSpeed(),_deltaTime);
+			if (_entities[GameManager::GameOLabel::Ennemi][i]->GetLife() <= 0)
+			{
+				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end());
+			}
 		}
 
 		// draw
 		_window->clear();
 
+		
 		for (int i = 0; i < _entities.size(); i++)
 		{
 			if (i == GameOLabel::Ennemi)
@@ -258,8 +267,14 @@ void GameManager::game()
 				o_window->winDraw(_mobsArea);
 				o_window->winDraw(_road);
 				o_window->winDraw(_base);
+
 			}
 			o_window->winDraw(_entities[i]);
+
+		}
+		for (int j = 0; j < _entities[GameOLabel::Tower].size(); j++)
+		{
+			o_window->winDraw(_entities[GameOLabel::Tower][j]->GetBulletsList());
 		}
 
 		_window->display();
