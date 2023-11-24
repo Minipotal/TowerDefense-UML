@@ -60,7 +60,7 @@ void GameManager::Initialize()
 	_window = o_window->getWindow();
 	_ressource = new Ressources(5000000,0, 0);
 	_mousePos = new sf::Vector2i();
-	_base = new Base(Vect2(1920 - 50, (windowHeight / 2) - (gameAreaHeight / caseColumnCount)), Vect2(50, (gameAreaHeight / caseColumnCount) * 2), 0x1CCFC9, 0, 10);
+	_base = new Base(Vect2(1920 - 50, (windowHeight / 2) - (gameAreaHeight / caseColumnCount)), Vect2(50, (gameAreaHeight / caseColumnCount) * 2), 0x1CCFC9, 0, 100);
 	_deltaTime = 0;
 	_entities.resize(GameManager::GameOLabel::Total);
 	_mobsArea = new GameObject(Vect2(0, (windowHeight/ 2) - (gameAreaHeight / caseColumnCount)), Vect2(windowWidth, (gameAreaHeight / caseColumnCount)*2), { 0x000000 }, 0, 0);

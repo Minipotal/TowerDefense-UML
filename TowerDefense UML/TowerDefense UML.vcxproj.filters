@@ -93,9 +93,6 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Fichiers sources\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="FileReader.cpp">
       <Filter>Fichiers sources\FileReader</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Colors.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Fichiers sources\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
