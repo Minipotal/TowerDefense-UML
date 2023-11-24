@@ -130,7 +130,7 @@ void GameManager::initMobs()
 			_entities[GameManager::GameOLabel::Ennemi].push_back(o_ennemies[i][j]);
 			startX -= 200;
 		}
-		startX -= 1000;
+		startX -= 500;
 	}
 }
 
@@ -232,13 +232,14 @@ void GameManager::game()
 
 		if (_base->getHp() <= 0)
 		{
-			std::cout << "You loose" << std::endl;
+			std::cout << std::endl << "You loose" << std::endl;
 			return;
 		}
 
+		std::cout << _entities[GameManager::GameOLabel::Ennemi].size() << std::endl;
 		if (_entities[GameManager::GameOLabel::Ennemi].size() == 0)
 		{
-			std::cout << "You Win" << std::endl;
+			std::cout << std::endl << "You Win" << std::endl;
 			return;
 		}
 
@@ -262,7 +263,8 @@ void GameManager::game()
 			if (_entities[GameManager::GameOLabel::Ennemi][i]->GetLife() <= 0)
 			{
 				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end());
-			if (_base->collideEnemie(_entities[GameManager::GameOLabel::Ennemi][i]))
+			}
+			else if (_base->collideEnemie(_entities[GameManager::GameOLabel::Ennemi][i]))
 			{
 				_base->minusHp(_entities[GameManager::GameOLabel::Ennemi][i]->getDamage());
 				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end()); // destroy ennemi

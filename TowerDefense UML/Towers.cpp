@@ -50,9 +50,9 @@ void Towers::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 		_pTarget = NULL;
 		for (int i = 0; i < _vBulletsList.size(); i++)
 		{
-			RemoveFromBulletsList(_vBulletsList[i]);
 			delete(_vBulletsList[i]);
 		}
+		_vBulletsList = {};
 		_state = TowersStates::Idle;
 	}
 }

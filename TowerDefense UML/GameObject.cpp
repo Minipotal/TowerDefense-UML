@@ -35,8 +35,8 @@ void GameObject::minusHp(int number)
 
 void GameObject::move(Vect2 direction, int speed, float deltaTime)
 {
-	SetPosition(_pos + direction * (speed * 10)*deltaTime);
-	_pos += direction * (speed * 10) * deltaTime;
+	SetPosition(_pos + direction * (speed * 10.0)*deltaTime);
+	_pos += direction * (speed * 10.0) * deltaTime;
 }
 
 Vect2 GameObject::pos()

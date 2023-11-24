@@ -1,4 +1,4 @@
 Name,ID,LifeMin,LifeMax,DamageMin,DamageMax,SpeedMin,SpeedMax,GoldMin,GoldMax,ColorFull,ColorLow
 barbare,0,18,31,9,18,5,11,10,20,0xE6EED6,0xAC8887
 goblin,1,6,10,3,10,15,28,15,27,0x132A13,0xECF39E
-ogre,2,40,60,20,31,1,2,19,32,0x264027,0x6F732F
+ogre,2,40,60,20,31,10,12,19,32,0xFF8C00,0xFF8C00

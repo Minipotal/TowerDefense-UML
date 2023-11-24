@@ -103,7 +103,7 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Fichiers sources\Object</Filter>
+      <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
