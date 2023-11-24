@@ -127,9 +127,10 @@ void GameManager::initMobs()
 		{
 			o_ennemies[i].resize(j);
 			o_ennemies[i].push_back(o_file->getEnnemie(o_file->getFile()[i][j], Vect2(startX, startY - 30)));
-			startX -= 50;
+			_entities[GameManager::GameOLabel::Ennemi].push_back(o_ennemies[i][j]);
+			startX -= 200;
 		}
-		startX -= 500;
+		startX -= 1000;
 	}
 }
 
@@ -242,17 +243,24 @@ void GameManager::game()
 			}
 		}
 
+		for (int i = 0; i < _entities[GameManager::GameOLabel::Ennemi].size(); i++)
+		{
+			_entities[GameManager::GameOLabel::Ennemi][i]->move(Vect2(1, 0), _entities[GameManager::GameOLabel::Ennemi][i]->GetSpeed(),_deltaTime);
+		}
+
 		// draw
 		_window->clear();
 
 		for (int i = 0; i < _entities.size(); i++)
 		{
+			if (i == GameOLabel::Ennemi)
+			{
+				o_window->winDraw(_mobsArea);
+				o_window->winDraw(_road);
+				o_window->winDraw(_base);
+			}
 			o_window->winDraw(_entities[i]);
 		}
-
-		o_window->winDraw(_mobsArea);
-		o_window->winDraw(_road);
-		o_window->winDraw(_base);
 
 		_window->display();
 

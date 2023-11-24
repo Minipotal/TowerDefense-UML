@@ -33,9 +33,10 @@ void GameObject::minusHp(int number)
 	_life -= number;
 }
 
-void GameObject::move(Vect2 direction)
+void GameObject::move(Vect2 direction, int speed, float deltaTime)
 {
-	_pos += direction;
+	SetPosition(_pos + direction * (speed * 1.5)*deltaTime);
+	_pos += direction * (speed * 1.5) * deltaTime;
 }
 
 Vect2 GameObject::pos()
@@ -72,7 +73,10 @@ void GameObject::SetShape(sf::Shape* newShape)
 {
 	_shape = newShape;
 }
-
+int GameObject::GetSpeed()
+{
+	return _speed;
+}
 
 bool GameObject::isPointInside(const sf::Vector2i& mousePos)
 {
@@ -103,4 +107,3 @@ const std::vector<GameObject*>& GameObject::GetBulletsList()
 void GameObject::Movement(float deltaTime)
 {
 }
-

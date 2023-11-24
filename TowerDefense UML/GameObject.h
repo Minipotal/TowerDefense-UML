@@ -20,7 +20,7 @@ public:
 	GameObject(Vect2 pos, float rayon, MyColor color, int speed, int life);
 
 	void minusHp(int number);
-	void move(Vect2 direction);
+	void move(Vect2 direction, int speed, float deltaTime);
 
 	Vect2 pos();
 	Vect2 size();
@@ -34,6 +34,7 @@ public:
 
 	bool isPointInside(const sf::Vector2i& mousePos);
 	Shape* getShape();
+	int GetSpeed();
 
 	virtual void ChooseTarget(std::vector<GameObject*> vEnnemiesList);
 	virtual const std::vector<GameObject*>& GetBulletsList();
