@@ -72,5 +72,6 @@ public:
 	void MTower1();
 	void MTower2();
 	void MTower3();
+	void HoverCase();
 };
 

@@ -59,6 +59,10 @@ void GameObject::SetOrigin(Vect2 vPos)
 {
 	_shape->setOrigin(vPos.getVector2f());
 }
+void GameObject::SetBorderColor(sf::Color cColor)
+{
+	_shape->setOutlineColor(cColor);
+}
 
 
 bool GameObject::isPointInside(const sf::Vector2i& mousePos)
