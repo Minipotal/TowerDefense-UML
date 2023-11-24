@@ -14,5 +14,7 @@ private:
 
 public:
 	Ennemies(Vect2 pos, float size, MyColor color, MyColor deadColor, int speed, int life, int damage, int gold);
+
+	int getDamage() override;
 };
 

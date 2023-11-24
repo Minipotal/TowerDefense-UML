@@ -227,10 +227,19 @@ void GameManager::game()
 		sf::Clock oClock;
 
 		EventManager::Get()->update(_window);
+		_ressource->setIron(1);
+		_ressource->setWood(2);
 
-		if (_base->getHp() == 0)
+		if (_base->getHp() <= 0)
 		{
 			std::cout << "You loose" << std::endl;
+			return;
+		}
+
+		if (_entities[GameManager::GameOLabel::Ennemi].size() == 0)
+		{
+			std::cout << "You Win" << std::endl;
+			return;
 		}
 
 		for (int i = 0; i < _entities[GameManager::GameOLabel::Tower].size(); i++)
@@ -253,6 +262,10 @@ void GameManager::game()
 			if (_entities[GameManager::GameOLabel::Ennemi][i]->GetLife() <= 0)
 			{
 				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end());
+			if (_base->collideEnemie(_entities[GameManager::GameOLabel::Ennemi][i]))
+			{
+				_base->minusHp(_entities[GameManager::GameOLabel::Ennemi][i]->getDamage());
+				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end()); // destroy ennemi
 			}
 		}
 

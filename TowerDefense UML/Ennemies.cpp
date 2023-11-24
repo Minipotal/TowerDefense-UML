@@ -10,3 +10,7 @@ Ennemies::Ennemies(Vect2 pos, float rayon, MyColor color, MyColor deadColor, int
 }
 
 
+int Ennemies::getDamage()
+{
+	return _damage;
+}

@@ -35,8 +35,8 @@ void GameObject::minusHp(int number)
 
 void GameObject::move(Vect2 direction, int speed, float deltaTime)
 {
-	SetPosition(_pos + direction * (speed * 1.5)*deltaTime);
-	_pos += direction * (speed * 1.5) * deltaTime;
+	SetPosition(_pos + direction * (speed * 10)*deltaTime);
+	_pos += direction * (speed * 10) * deltaTime;
 }
 
 Vect2 GameObject::pos()
@@ -122,4 +122,8 @@ int GameObject::GetLife()
 
 void GameObject::EnnemiesColid(std::vector<GameObject*> vEnnemiesList)
 {
+}
+int GameObject::getDamage()
+{
+	return 0;
 }

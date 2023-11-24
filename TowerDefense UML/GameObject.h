@@ -46,5 +46,6 @@ public:
 
 	virtual void Movement(float deltaTime);
 	virtual void EnnemiesColid(std::vector<GameObject*> vEnnemiesList);
+	virtual int getDamage();
 };
 
