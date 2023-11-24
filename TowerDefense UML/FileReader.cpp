@@ -144,7 +144,7 @@ std::vector<std::vector<int>> FileReader::getFile()
     return _tabFile;
 }
 
-Ennemies* FileReader::getEnnemie(int id)
+Ennemies* FileReader::getEnnemie(int id, Vect2 size)
 {
     int i = 0;
     for (std::string col : _tabEnnemies[0])
@@ -217,7 +217,7 @@ Ennemies* FileReader::getEnnemie(int id)
         }
     }
 
-    Ennemies* newEnnemie = new Ennemies(Vect2(0, 0), 30, ColorFull, ColorLow, randint(SpeedMin, SpeedMax), randint(LifeMin, LifeMax), randint(DamageMin, DamageMax), randint(GoldMin, GoldMax));
+    Ennemies* newEnnemie = new Ennemies(size, 30, ColorFull, ColorLow, randint(SpeedMin, SpeedMax), randint(LifeMin, LifeMax), randint(DamageMin, DamageMax), randint(GoldMin, GoldMax));
     return newEnnemie;
 }
 
