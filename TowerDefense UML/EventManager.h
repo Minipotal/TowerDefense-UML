@@ -6,6 +6,8 @@
 
 #include "Vect.h"
 
+
+class Cases;
 typedef void (*event)();
 
 

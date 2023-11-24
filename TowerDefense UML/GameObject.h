@@ -29,6 +29,8 @@ public:
 	void SetSize(Vect2 size);
 	void SetOrigin(Vect2 pos);
 
+	void SetBorderColor(sf::Color cColor);
+
 	bool isPointInside(const sf::Vector2i& mousePos);
 	Shape* getShape();
 

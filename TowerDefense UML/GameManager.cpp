@@ -255,3 +255,22 @@ void GameManager::game()
 		_deltaTime = oClock.restart().asSeconds();
 	}
 }
+
+void GameManager::HoverCase()
+{
+	sf::Vector2i _mousePos = sf::Mouse::getPosition(*_window);
+	for (int i = 0; i < o_cases.size(); i++)
+	{
+		for (int j = 0; j < o_cases[i].size(); j++)
+		{
+			if ((o_cases[i][j]->pos().x() < _mousePos.x) && (_mousePos.x < o_cases[i][j]->pos().x() + o_cases[i][j]->size().x()) && (o_cases[i][j]->pos().y() < _mousePos.y) && (_mousePos.y < o_cases[i][j]->pos().y() + o_cases[i][j]->size().y()))
+			{
+				o_cases[i][j]->SetBorderColor(sf::Color(55, 55, 55));
+			}
+			else
+			{
+				o_cases[i][j]->SetBorderColor(sf::Color::Black);
+			}
+		}
+	}
+}

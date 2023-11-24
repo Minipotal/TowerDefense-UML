@@ -1,4 +1,5 @@
 #include "EventManager.h"
+#include "Cases.h"
 
 EventManager* EventManager::_pInstance = nullptr;
 
@@ -47,6 +48,10 @@ void EventManager::update(sf::RenderWindow* _window)
 			{
 				CheckEventKeyBoard(m_oAreasKeyboard[i]._eGameArea, event.key.code);
 			}
+		}
+		else if (event.type == sf::Event::MouseMoved)
+		{
+			GameManager::Get()->HoverCase();
 		}
 	}
 }	
