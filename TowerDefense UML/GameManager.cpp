@@ -171,6 +171,7 @@ void GameManager::Mupgrade()
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
 					o_cases[i][j]->upgrade(_ressource);
+					std::cout << "update" << std::endl;
 				}
 			}
 		}
@@ -189,8 +190,9 @@ void GameManager::Mdestroy()
 			{
 				if (o_cases[i][j]->isFilled())
 				{
-					_entities[GameManager::GameOLabel::Tower].erase(std::remove(_entities[0].begin(), _entities[0].end(), o_cases[i][j]->getTower()), _entities[0].end());
+					_entities[GameManager::GameOLabel::Tower].erase(std::remove(_entities[GameManager::GameOLabel::Tower].begin(), _entities[GameManager::GameOLabel::Tower].end(), o_cases[i][j]->getTower()), _entities[GameManager::GameOLabel::Tower].end());
 					o_cases[i][j]->destroy(_ressource);
+					std::cout << "destroy" << std::endl;
 				}
 			}
 		}
