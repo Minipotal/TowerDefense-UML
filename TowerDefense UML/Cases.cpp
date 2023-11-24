@@ -37,6 +37,7 @@ void Cases::buy(Towers* o_tower, Ressources* o_ressources)
 		_placedTower = o_tower;
 		sf::Shape* newShape = new sf::RectangleShape(Vect2(_size.x(), _size.y()).getVector2f());
 		o_tower->SetShape(newShape);
+		o_tower->getShape()->setFillColor(o_tower->getColor());
 		o_tower->SetPosition(Vect2(_pos.x(), _pos.y()));
 		o_tower->SetSize(Vect2(_size.x(), _size.y()));
 		_isFilled = true;
