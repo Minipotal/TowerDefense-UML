@@ -7,4 +7,4 @@ Ressources::Ressources(int gold, int wood, int iron)
 	_iron = iron;
 }
 
-Ressources::Ressources() : Ressources(1000000000000, 0, 0) {};
+Ressources::Ressources() : Ressources(50000, 0, 0) {};

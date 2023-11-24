@@ -35,8 +35,15 @@ void Cases::buy(Towers* o_tower, Ressources* o_ressources)
 	{
 		o_ressources->_gold -= o_tower->getCost();
 		_placedTower = o_tower;
+		o_tower->SetPosition(Vect2(_pos.x(), _pos.y()));
+		o_tower->SetSize(Vect2(_size.x(), _size.y()));
 		_isFilled = true;
 	}
+}
+
+bool Cases::isFilled()
+{
+	return _isFilled;
 }
 
 Towers* Cases::getTower()

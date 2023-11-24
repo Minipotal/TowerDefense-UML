@@ -55,6 +55,11 @@ void GameObject::SetPosition(Vect2 vPos)
 	_shape->setPosition(vPos.getVector2f());
 }
 
+void GameObject::SetSize(Vect2 size)
+{
+	_size = size;
+}
+
 void GameObject::SetOrigin(Vect2 vPos)
 {
 	_shape->setOrigin(vPos.getVector2f());

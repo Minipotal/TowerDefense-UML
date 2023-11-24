@@ -58,7 +58,7 @@ void GameManager::Initialize()
 
 	o_window = new MWindow(Vect2(windowWidth, windowHeight), "Tower Defense");
 	_window = o_window->getWindow();
-	_ressource = new Ressources();
+	_ressource = new Ressources(5000000,0, 0);
 	_mousePos = new sf::Vector2i();
 	_base = new Base(Vect2(1920 - 50, (windowHeight / 2) - (gameAreaHeight / caseColumnCount)), Vect2(50, (gameAreaHeight / caseColumnCount) * 2), 0x1CCFC9, 0, 10);
 	_deltaTime = 0;
@@ -70,6 +70,8 @@ void GameManager::Initialize()
 	/* init entities */
 	initMobs();
 	initTowers();
+
+	_selectedTower = o_towers[0];
 
 	// cases
 	float startX = gameAreaStartX;
@@ -132,7 +134,6 @@ void GameManager::initTowers()
 	o_file->readFileTower("Files/csv_for_tower.csv");
 
 	int max = 3;
-	o_towers.resize(max);
 	for (int id = 0; id < max; id++)
 	{
 		o_towers.push_back(o_file->getTower(id));
@@ -141,18 +142,17 @@ void GameManager::initTowers()
 
 void GameManager::Mbuy()
 {
-	if (_selectedTower != nullptr)
+	if (_selectedTower == nullptr)
+		return;
+	for (int i = 0; i < o_cases.size(); i++)
 	{
-		for (int i = 0; i < o_cases.size(); i++)
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			for (int j = 0; j < o_cases[i].size(); j++)
+			if (o_cases[i][j]->isPointInside(*_mousePos))
 			{
-				if (o_cases[i][j]->isPointInside(*_mousePos))
-				{
-					o_cases[i][j]->buy(_selectedTower, _ressource);
-					_entities[GameManager::GameOLabel::Tower].push_back(_selectedTower);
-					std::cout << "buy" << std::endl;
-				}
+				o_cases[i][j]->buy(_selectedTower, _ressource);
+				_entities[GameManager::GameOLabel::Tower].push_back(_selectedTower);
+				std::cout << "buy" << std::endl;
 			}
 		}
 	}
@@ -160,11 +160,13 @@ void GameManager::Mbuy()
 
 void GameManager::Mupgrade()
 {
-	if (_selectedTower != nullptr)
+	if (_selectedTower == nullptr)
+		return;
+	for (int i = 0; i < o_cases.size(); i++)
 	{
-		for (int i = 0; i < o_cases.size(); i++)
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			for (int j = 0; j < o_cases[i].size(); j++)
+			if (o_cases[i][j]->isFilled())
 			{
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
@@ -177,13 +179,15 @@ void GameManager::Mupgrade()
 
 void GameManager::Mdestroy()
 {
-	if (_selectedTower != nullptr)
+	if (_selectedTower == nullptr)
+		return;
+	for (int i = 0; i < o_cases.size(); i++)
 	{
-		for (int i = 0; i < o_cases.size(); i++)
+		for (int j = 0; j < o_cases[i].size(); j++)
 		{
-			for (int j = 0; j < o_cases[i].size(); j++)
+			if (o_cases[i][j]->isPointInside(*_mousePos))
 			{
-				if (o_cases[i][j]->isPointInside(*_mousePos))
+				if (o_cases[i][j]->isFilled())
 				{
 					_entities[GameManager::GameOLabel::Tower].erase(std::remove(_entities[0].begin(), _entities[0].end(), o_cases[i][j]->getTower()), _entities[0].end());
 					o_cases[i][j]->destroy(_ressource);
@@ -196,17 +200,19 @@ void GameManager::Mdestroy()
 void GameManager::MTower1()
 {
 	_selectedTower = o_towers[0];
-
+	//std::cout << "tour1" << std::endl;
 }
 
 void GameManager::MTower2()
 {
 	_selectedTower = o_towers[1];
+	//std::cout << "tour2" << std::endl;
 }
 
 void GameManager::MTower3()
 {
 	_selectedTower = o_towers[2];
+	//std::cout << "tour3" << std::endl;
 }
 
 void GameManager::game()
