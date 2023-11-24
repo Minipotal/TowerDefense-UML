@@ -35,7 +35,7 @@ void GameObject::minusHp(int number)
 
 void GameObject::move(Vect2 direction)
 {
-	_pos += direction;
+	_pos += direction * _speed;
 }
 
 Vect2 GameObject::pos()
