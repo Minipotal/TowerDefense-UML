@@ -68,6 +68,10 @@ void GameObject::SetBorderColor(sf::Color cColor)
 {
 	_shape->setOutlineColor(cColor);
 }
+void GameObject::SetShape(sf::Shape* newShape)
+{
+	_shape = newShape;
+}
 
 
 bool GameObject::isPointInside(const sf::Vector2i& mousePos)
