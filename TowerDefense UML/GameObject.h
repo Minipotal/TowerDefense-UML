@@ -33,7 +33,9 @@ public:
 	void SetShape(sf::Shape* newShape);
 
 	bool isPointInside(const sf::Vector2i& mousePos);
+
 	Shape* getShape();
+	sf::Color getColor();
 	int GetSpeed();
 
 	virtual void ChooseTarget(std::vector<GameObject*> vEnnemiesList);

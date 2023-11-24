@@ -92,6 +92,11 @@ Shape* GameObject::getShape()
 	return _shape;
 }
 
+sf::Color GameObject::getColor()
+{
+	return _color.getSfColor();
+}
+
 void GameObject::ChooseTarget(std::vector<GameObject*> vEnnemiesList)
 {
 }
