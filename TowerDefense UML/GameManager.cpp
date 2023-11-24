@@ -228,9 +228,16 @@ void GameManager::game()
 
 		EventManager::Get()->update(_window);
 
-		if (_base->getHp() == 0)
+		if (_base->getHp() <= 0)
 		{
 			std::cout << "You loose" << std::endl;
+			return;
+		}
+
+		if (_entities[GameManager::GameOLabel::Ennemi].size() == 0)
+		{
+			std::cout << "You Win" << std::endl;
+			return;
 		}
 
 		for (int i = 0; i < _entities[GameManager::GameOLabel::Tower].size(); i++)
@@ -246,6 +253,12 @@ void GameManager::game()
 		for (int i = 0; i < _entities[GameManager::GameOLabel::Ennemi].size(); i++)
 		{
 			_entities[GameManager::GameOLabel::Ennemi][i]->move(Vect2(1, 0), _entities[GameManager::GameOLabel::Ennemi][i]->GetSpeed(),_deltaTime);
+			if (_base->collideEnemie(_entities[GameManager::GameOLabel::Ennemi][i]))
+			{
+				_base->minusHp(_entities[GameManager::GameOLabel::Ennemi][i]->getDamage());
+				_entities[GameManager::GameOLabel::Ennemi].erase(std::remove(_entities[GameManager::GameOLabel::Ennemi].begin(), _entities[GameManager::GameOLabel::Ennemi].end(), _entities[GameManager::GameOLabel::Ennemi][i]), _entities[GameManager::GameOLabel::Ennemi].end()); // destroy ennemi
+				std::cout << _base->getHp() << std::endl;
+			}
 		}
 
 		// draw

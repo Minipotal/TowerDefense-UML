@@ -42,5 +42,6 @@ public:
 	virtual const std::vector<GameObject*>& GetBulletsList();
 
 	virtual void Movement(float deltaTime);
+	virtual int getDamage();
 };
 

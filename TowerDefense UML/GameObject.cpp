@@ -35,8 +35,8 @@ void GameObject::minusHp(int number)
 
 void GameObject::move(Vect2 direction, int speed, float deltaTime)
 {
-	SetPosition(_pos + direction * (speed * 1.5)*deltaTime);
-	_pos += direction * (speed * 1.5) * deltaTime;
+	SetPosition(_pos + direction * (speed * 10)*deltaTime);
+	_pos += direction * (speed * 10) * deltaTime;
 }
 
 Vect2 GameObject::pos()
@@ -111,4 +111,9 @@ const std::vector<GameObject*>& GameObject::GetBulletsList()
 
 void GameObject::Movement(float deltaTime)
 {
+}
+
+int GameObject::getDamage()
+{
+	return 0;
 }
