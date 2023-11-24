@@ -116,6 +116,9 @@ void GameManager::initMobs()
 	o_file->readFileTxt("Files/mobs.txt");
 	o_file->readFileEnnemie("Files/csv_for_ennemi.csv");
 
+	int startX = 0;
+	int startY = 1080 / 2;
+
 	o_ennemies.resize(o_file->getFile().size());
 
 	for (int i = 0; i < o_file->getFile().size(); i++)
@@ -123,8 +126,10 @@ void GameManager::initMobs()
 		for (int j = 0; j < o_file->getFile()[i].size(); j++)
 		{
 			o_ennemies[i].resize(j);
-			o_ennemies[i].push_back(o_file->getEnnemie(o_file->getFile()[i][j]));
+			o_ennemies[i].push_back(o_file->getEnnemie(o_file->getFile()[i][j], Vect2(startX, startY - 30)));
+			startX -= 50;
 		}
+		startX -= 500;
 	}
 }
 
@@ -150,9 +155,11 @@ void GameManager::Mbuy()
 		{
 			if (o_cases[i][j]->isPointInside(*_mousePos))
 			{
-				o_cases[i][j]->buy(_selectedTower, _ressource);
-				_entities[GameManager::GameOLabel::Tower].push_back(_selectedTower);
-				std::cout << "buy" << std::endl;
+				if (!o_cases[i][j]->isFilled())
+				{
+					o_cases[i][j]->buy(_selectedTower, _ressource);
+					_entities[GameManager::GameOLabel::Tower].push_back(_selectedTower);
+				}
 			}
 		}
 	}
@@ -171,7 +178,6 @@ void GameManager::Mupgrade()
 				if (o_cases[i][j]->isPointInside(*_mousePos))
 				{
 					o_cases[i][j]->upgrade(_ressource);
-					std::cout << "update" << std::endl;
 				}
 			}
 		}
@@ -192,7 +198,6 @@ void GameManager::Mdestroy()
 				{
 					_entities[GameManager::GameOLabel::Tower].erase(std::remove(_entities[GameManager::GameOLabel::Tower].begin(), _entities[GameManager::GameOLabel::Tower].end(), o_cases[i][j]->getTower()), _entities[GameManager::GameOLabel::Tower].end());
 					o_cases[i][j]->destroy(_ressource);
-					std::cout << "destroy" << std::endl;
 				}
 			}
 		}
@@ -202,19 +207,16 @@ void GameManager::Mdestroy()
 void GameManager::MTower1()
 {
 	_selectedTower = o_towers[0];
-	//std::cout << "tour1" << std::endl;
 }
 
 void GameManager::MTower2()
 {
 	_selectedTower = o_towers[1];
-	//std::cout << "tour2" << std::endl;
 }
 
 void GameManager::MTower3()
 {
 	_selectedTower = o_towers[2];
-	//std::cout << "tour3" << std::endl;
 }
 
 void GameManager::game()
@@ -257,6 +259,10 @@ void GameManager::game()
 		_deltaTime = oClock.restart().asSeconds();
 	}
 }
+
+
+
+
 
 void GameManager::HoverCase()
 {

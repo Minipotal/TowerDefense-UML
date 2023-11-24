@@ -25,7 +25,7 @@ public:
 	void readFileEnnemie(std::string path);
 	void readFileTower(std::string path);
 	std::vector<std::vector<int>> getFile();
-	Ennemies* getEnnemie(int id);
+	Ennemies* getEnnemie(int id, Vect2 size);
 	Towers* getTower(int id);
 	int getFileHeight();
 
