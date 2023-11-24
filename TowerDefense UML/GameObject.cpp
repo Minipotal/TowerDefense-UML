@@ -18,7 +18,7 @@ GameObject::GameObject(Vect2 pos, Vect2 size, MyColor color, int speed, int life
 GameObject::GameObject(Vect2 pos, float rayon, MyColor color, int speed, int life) //circle
 {
 	_pos = pos;
-	_size = (rayon*2, rayon*2);
+	_size = Vect2(rayon*2, rayon*2);
 	_color = color;
 	_speed = speed;
 	_life = life;
